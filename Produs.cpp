@@ -73,3 +73,8 @@ Produs::Produs(int cantitate, float pret, float rating, string nume, string desc
 	this->nume = nume;
 	this->descriere = desciere;
 }
+
+void Produs::afisareDetalii()
+{
+	cout << descriere << "\n";
+}

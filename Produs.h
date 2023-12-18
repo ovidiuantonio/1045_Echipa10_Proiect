@@ -32,8 +32,7 @@ public:
 	Produs();
 	Produs(int cantitate, float pret, float rating, string nume, string desciere);
 
-	// metode virtuale pure de implementat pentru fiecare produs in parte
-	virtual void afisareDetalii() = 0;
-	virtual void blackFriday() = 0;
+	// metode virtuale de implementat pentru fiecare produs in parte
+	virtual void afisareDetalii();
 };
 

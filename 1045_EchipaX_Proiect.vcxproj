@@ -106,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -127,25 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="1045_EchipaX_Proiect.h" />
     <ClInclude Include="Client.h" />
-    <ClInclude Include="framework.h" />
     <ClInclude Include="Magazin.h" />
     <ClInclude Include="Produs.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Subler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1045_EchipaX_Proiect.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Magazin.cpp" />
     <ClCompile Include="Produs.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="1045_EchipaX_Proiect.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="1045_EchipaX_Proiect.ico" />
-    <Image Include="small.ico" />
+    <ClCompile Include="Subler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

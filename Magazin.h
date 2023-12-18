@@ -6,15 +6,12 @@ using namespace std;
 class Magazin
 {
 protected:
-	int* nrProduse;
-	Produs** produse;
 	string nume;
 
 public:
 	Magazin();
-	Magazin(string nume, int nrproduse, Produs** produse);
+	Magazin(string nume);
 
-	Produs* getProdus(int indexProdus);
 	string getNume();
 };
 

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "Produs.h"
 #include "Client.h"
 #include "Magazin.h"
@@ -11,7 +12,7 @@ int main() {
 
 	int nrProduseMagazin = 1;
 	Produs** produseMagazin = new Produs * [nrProduseMagazin];
-	produseMagazin[0] = new Subler(10, 107, 4.89, "zggzerg", "Cei mai bun subler pentru mesterii adevarati!", "electric", "negru", 150);
+	produseMagazin[0] = new Subler(10, 107, 4.89, "Subler", "sugubat", "Cei mai bun subler pentru mesterii adevarati!", "electric", "negru", 150);
 	Magazin magazin("VOMMA");
 
 	Client client("Ovidiu", "0752", 18);
@@ -19,6 +20,7 @@ int main() {
 	// primim tipul de utilizator si nu permitem introducerea altor valori in afar de C si A
 	cout << "Cum vrei sa accesezi magazinul X? In calitate de Client (C) sau Administrator (A)?\n";
 	while (cin >> tipUser) {
+		tipUser[0] = toupper(tipUser[0]);
 		if (tipUser != "C" && tipUser != "A") {
 			cout << "Rol invalid! Te rog introdu din nou rolul dorit! Client (C) sau Administrator (A)\n";
 		}
@@ -45,7 +47,7 @@ int main() {
 				//1. Vizualizeaza produsele din magazin
 				cout << "Produsele disponibile in magazin sunt:\n";
 				for (int i = 0; i < nrProduseMagazin; i++) {
-					cout << i + 1 << ". " << produseMagazin[i]->getNume() << "\n";
+					cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << "\n";
 				}
 			}
 			else if (optiune == 2) {

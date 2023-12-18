@@ -7,7 +7,7 @@ Subler::Subler()
 	distantaMaxima = 100;
 }
 
-Subler::Subler(int cantitate, float pret, float rating, string nume, string desciere, string tip, string culoare, int distantaMaxima)
+Subler::Subler(int cantitate, float pret, float rating, string nume, string marca, string desciere, string tip, string culoare, int distantaMaxima) : Produs(cantitate, pret, rating, nume, marca, desciere)
 {
 	this->tip = tip;
 	this->culoare = culoare;

@@ -10,6 +10,7 @@ protected:
 	float pret;
 	float rating;
 	string nume;
+	string marca;
 	string descriere;
 public:
 	// getteri si setteri
@@ -25,12 +26,15 @@ public:
 	void setNume(string nume);
 	string getNume();
 
+	void setMarca(string marca);
+	string getMarca();
+
 	void setDescriere(string descriere);
 	string getDescriere();
 
 	//constructori
 	Produs();
-	Produs(int cantitate, float pret, float rating, string nume, string desciere);
+	Produs(int cantitate, float pret, float rating, string nume, string marca, string desciere);
 
 	// metode virtuale de implementat pentru fiecare produs in parte
 	virtual void afisareDetalii();

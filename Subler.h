@@ -13,7 +13,7 @@ class Subler :
 
 public:
     Subler();
-    Subler(int cantitate, float pret, float rating, string nume, string desciere, string tip, string culoare, int distantaMaxima) : Produs(cantitate, pret, rating, nume, desciere);
+    Subler(int cantitate, float pret, float rating, string nume, string marca, string desciere, string tip, string culoare, int distantaMaxima);
 
     void setTip(string tip);
     string getTip();

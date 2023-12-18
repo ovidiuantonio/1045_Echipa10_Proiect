@@ -43,6 +43,16 @@ string Produs::getNume()
 	return nume;
 }
 
+void Produs::setMarca(string marca)
+{
+	this->marca = marca;
+}
+
+string Produs::getMarca()
+{
+	return marca;
+}
+
 void Produs::setDescriere(string descriere)
 {
 	this->descriere = descriere;
@@ -59,10 +69,11 @@ Produs::Produs()
 	pret = 1;
 	rating = 1;
 	nume = "Produs-Default";
+	marca = "Samsung";
 	descriere = "Lorem Ipsum";
 }
 
-Produs::Produs(int cantitate, float pret, float rating, string nume, string desciere)
+Produs::Produs(int cantitate, float pret, float rating, string nume, string marca, string desciere)
 {
 	if(cantitate >= 0)
 		this->cantitate = cantitate;
@@ -71,6 +82,7 @@ Produs::Produs(int cantitate, float pret, float rating, string nume, string desc
 	if (rating > 0 && rating <= 5)
 		this->rating = rating;
 	this->nume = nume;
+	this->marca = marca;
 	this->descriere = desciere;
 }
 

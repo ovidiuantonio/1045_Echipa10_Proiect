@@ -7,6 +7,13 @@
 
 using namespace std;
 
+void vizualizareProduse(int nrProduseMagazin, Produs** produseMagazin) {
+	cout << "Produsele disponibile in magazin sunt:\n";
+	for (int i = 0; i < nrProduseMagazin; i++) {
+		cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << "\n";
+	}
+}
+
 int main() {
 	string tipUser;
 
@@ -27,6 +34,7 @@ int main() {
 		else
 			break;
 	}
+
 	
 	if (tipUser == "C") {
 		cout << "Bine ai venit in magazinul " << magazin.getNume() << "\n";
@@ -43,12 +51,12 @@ int main() {
 					break;
 			}
 
+			// VA ROG SA FACETI OPTIUNILE IN FUNCTII DIFERITE!
+
 			if (optiune == 1) {
 				//1. Vizualizeaza produsele din magazin
-				cout << "Produsele disponibile in magazin sunt:\n";
-				for (int i = 0; i < nrProduseMagazin; i++) {
-					cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << "\n";
-				}
+				vizualizareProduse(nrProduseMagazin, produseMagazin);
+				
 			}
 			else if (optiune == 2) {
 				//2. Adauga produse in cos

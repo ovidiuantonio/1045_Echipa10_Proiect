@@ -38,5 +38,8 @@ public:
 
 	// metode virtuale de implementat pentru fiecare produs in parte
 	virtual void afisareDetalii();
+	virtual void editareProdus();
+
+	
 };
 

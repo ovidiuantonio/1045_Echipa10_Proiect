@@ -30,6 +30,9 @@
     <ClInclude Include="Subler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MasinaDeTunsIarba.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1045_EchipaX_Proiect.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Subler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MasinaDeTunsIarba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

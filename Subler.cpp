@@ -50,3 +50,10 @@ void Subler::afisareDetalii()
 {
 	cout << "Sublerul " << nume << "este de tip " << tip << ", are culoarea " << culoare << " si poate masura la o distanta maxima de " << distantaMaxima << "mm. Are pretul de " << pret << "lei si are un rating de " << rating << "/ 5 stele. Cantitatea disponibila este de " << cantitate << " bucati!\n" << descriere << "\n";
 }
+
+void Subler::editareProdus() {
+	Produs::editareProdus();
+	cin >> tip;
+	cin >> culoare;
+	cin >> distantaMaxima;
+}

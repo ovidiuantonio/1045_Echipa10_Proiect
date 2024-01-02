@@ -1,4 +1,5 @@
 #include "Magazin.h"
+#include<fstream>
 
 
 Magazin::Magazin() {
@@ -58,6 +59,25 @@ void Magazin::adaugaProdusMagazin(Produs* produs) {
 	produseMagazin = aux;
 }
 
+void Magazin::editareProdusMagazin(Produs* produs) {
+	produs->editareProdus();
+}
+
+void Magazin::stergereProdusMagazin(Produs* produs) {
+	int i;
+	for (i = 0; i < nrProduseMagazin; i++) 
+		if (produseMagazin[i] == produs)
+			break;
+
+	if (i <nrProduseMagazin)
+	{
+		nrProduseMagazin = nrProduseMagazin - 1;
+		for (int j = i; j < nrProduseMagazin; j++)
+			produseMagazin[j] = produseMagazin[j + 1];
+	}
+
+}
+
 void Magazin::vizualizareProduse() {
 	cout << "Produsele disponibile in magazin sunt:\n";
 	for (int i = 0; i < nrProduseMagazin; i++) {
@@ -69,3 +89,19 @@ void Magazin::afiseazaMeniu()
 {
 	cout << "1. Adauga un produs in magazin\n2. Editeaza un produs din magazin\n3. Sterge un produs din magazin\n4. Prelucreaza comenzile\n5. Realizeaza raportul tuturor comenzilor\n\n\n0. Inchide aplicatia\n";
 }
+
+	Magazin Magazin::operator-=(Produs* p) {
+		int i;
+		for (i = 0; i < nrProduseMagazin; i++)
+			if (produseMagazin[i] == p)
+				break;
+
+		if (i < nrProduseMagazin)
+		{
+			nrProduseMagazin = nrProduseMagazin - 1;
+			for (int j = i; j < nrProduseMagazin; j++)
+				produseMagazin[j] = produseMagazin[j + 1];
+		}
+	}
+
+	ofstream fisier("fisier.dat");

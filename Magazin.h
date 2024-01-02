@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-class Magazin: public Produs
+class Magazin
 {
 private:
 	string nume;
@@ -24,5 +24,9 @@ public:
 
 	void afiseazaMeniu();
 	void vizualizareProduse();
+	void editareProdusMagazin(Produs* produs);
+	void stergereProdusMagazin(Produs* produs);
+
+	Magazin operator-=(Produs* p);
 };
 

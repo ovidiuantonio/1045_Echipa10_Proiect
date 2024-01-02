@@ -4,8 +4,7 @@
 
 using namespace std;
 
-class Subler :
-    public Produs
+class Subler : public Produs
 {
     string tip;
     string culoare;
@@ -25,5 +24,6 @@ public:
     int getDistantaMaxima();
 
     void afisareDetalii();
+    void editareProdus();
 };
 

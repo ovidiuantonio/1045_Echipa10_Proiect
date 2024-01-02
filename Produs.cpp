@@ -90,3 +90,12 @@ void Produs::afisareDetalii()
 {
 	cout << descriere << "\n";
 }
+
+void Produs::editareProdus() {
+	cin>> cantitate;
+	cin>> pret;
+	cin>> rating;
+	cin>> nume;
+	cin>> marca;
+	cin>> descriere;
+}

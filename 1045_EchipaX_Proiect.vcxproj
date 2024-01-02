@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="Magazin.h" />
+    <ClInclude Include="MasinaDeTunsIarba.h" />
     <ClInclude Include="Produs.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Subler.h" />
@@ -137,6 +138,7 @@
     <ClCompile Include="1045_EchipaX_Proiect.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Magazin.cpp" />
+    <ClCompile Include="MasinaDeTunsIarba.cpp" />
     <ClCompile Include="Produs.cpp" />
     <ClCompile Include="Subler.cpp" />
   </ItemGroup>

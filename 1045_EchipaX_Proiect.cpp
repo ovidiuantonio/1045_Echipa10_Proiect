@@ -4,6 +4,7 @@
 #include "Client.h"
 #include "Magazin.h"
 #include "Subler.h"
+#include "MasinaDeTunsIarba.h"
 
 using namespace std;
 
@@ -13,6 +14,8 @@ int main() {
 	Magazin magazin("VOMMA", 0, nullptr);
 	Produs* subler = new Subler(10, 107, 4.89, "Subler", "sugubat", "Cei mai bun subler pentru mesterii adevarati!", "electric", "negru", 150);
 	magazin.adaugaProdusMagazin(subler);
+	Produs* masinaDeTunsIarba = new MasinaDeTunsIarba(2, 450, 4.50, "Masina de tuns Iarba", "Heinner", "Masina de tuns Heinner tunde iarba cel mai bine!", "xc230", "albastru", 4.2);
+	magazin.adaugaProdusMagazin(masinaDeTunsIarba);
 
 	Client client("Ovidiu", "0752925119", 18, 0, nullptr, nullptr);
 

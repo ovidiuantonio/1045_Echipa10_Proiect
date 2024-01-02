@@ -3,15 +3,25 @@
 #include <iostream>
 
 using namespace std;
-class Magazin
+class Magazin: public Produs
 {
-protected:
+private:
 	string nume;
+	int nrProduseMagazin;
+	Produs** produseMagazin;
 
 public:
 	Magazin();
-	Magazin(string nume);
+	Magazin(string nume, int nrProduseMagazin, Produs** produseMagazin);
+	~Magazin();
 
 	string getNume();
+	Produs** getProduseMagazin();
+
+	void setNume(string nume);
+
+	void adaugaProdusMagazin(Produs* produs);
+
+	void vizualizareProduse();
 };
 

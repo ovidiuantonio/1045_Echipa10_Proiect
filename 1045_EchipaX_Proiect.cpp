@@ -7,25 +7,17 @@
 
 using namespace std;
 
-void vizualizareProduse(int nrProduseMagazin, Produs** produseMagazin) {
-	cout << "Produsele disponibile in magazin sunt:\n";
-	for (int i = 0; i < nrProduseMagazin; i++) {
-		cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << "\n";
-	}
-}
-
 int main() {
 	string tipUser;
 
-	int nrProduseMagazin = 1;
-	Produs** produseMagazin = new Produs * [nrProduseMagazin];
-	produseMagazin[0] = new Subler(10, 107, 4.89, "Subler", "sugubat", "Cei mai bun subler pentru mesterii adevarati!", "electric", "negru", 150);
-	Magazin magazin("VOMMA");
+	Magazin magazin("VOMMA", 0, nullptr);
+	Produs* subler = new Subler(10, 107, 4.89, "Subler", "sugubat", "Cei mai bun subler pentru mesterii adevarati!", "electric", "negru", 150);
+	magazin.adaugaProdusMagazin(subler);
 
-	Client client("Ovidiu", "0752", 18);
+	Client client("Ovidiu", "0752925119", 18, 0, nullptr, nullptr);
 
 	// primim tipul de utilizator si nu permitem introducerea altor valori in afar de C si A
-	cout << "Cum vrei sa accesezi magazinul X? In calitate de Client (C) sau Administrator (A)?\n";
+	cout << "Cum vrei sa accesezi magazinul " << magazin.getNume() << "? In calitate de Client(C) sau Administrator(A) ? \n";
 	while (cin >> tipUser) {
 		tipUser[0] = toupper(tipUser[0]);
 		if (tipUser != "C" && tipUser != "A") {
@@ -55,8 +47,7 @@ int main() {
 
 			if (optiune == 1) {
 				//1. Vizualizeaza produsele din magazin
-				vizualizareProduse(nrProduseMagazin, produseMagazin);
-				
+				magazin.vizualizareProduse();
 			}
 			else if (optiune == 2) {
 				//2. Adauga produse in cos

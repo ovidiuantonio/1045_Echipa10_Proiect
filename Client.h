@@ -6,17 +6,18 @@ using namespace std;
 
 class Client
 {
-protected:
+private:
 	// vector de pointeri la obiecte de tip produs, relatie de has-a intre client si produse
-	int* cantitati = new int[5];
-	int nrProduse;
+	int* cantitati;
+	int nrProduseCos;
+	Produs** produseCosClient;
 	string nume;
 	string telefon;
 	int varsta;
 
 public:
 	Client();
-	Client(string nume, string telefon, int varsta);
+	Client(string nume, string telefon, int varsta, int nrProduseCos, int* cantitati, Produs** produseCosClient);
 	~Client();
 
 	void afisareCos();

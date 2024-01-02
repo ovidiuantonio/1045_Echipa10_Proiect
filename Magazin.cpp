@@ -64,3 +64,8 @@ void Magazin::vizualizareProduse() {
 		cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << "\n";
 	}
 }
+
+void Magazin::afiseazaMeniu()
+{
+	cout << "1. Adauga un produs in magazin\n2. Editeaza un produs din magazin\n3. Sterge un produs din magazin\n4. Prelucreaza comenzile\n5. Realizeaza raportul tuturor comenzilor\n\n\n0. Inchide aplicatia\n";
+}

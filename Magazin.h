@@ -22,6 +22,7 @@ public:
 
 	void adaugaProdusMagazin(Produs* produs);
 
+	void afiseazaMeniu();
 	void vizualizareProduse();
 };
 

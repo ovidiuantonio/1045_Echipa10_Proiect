@@ -21,10 +21,12 @@ public:
 	~Client();
 
 	void afisareCos();
-	void setDateClient();
 	void afiseazaMeniu();
 
 	string getNume();
+
+	friend istream& operator>>(istream& cin, Client& client);
+	friend ostream& operator<<(ostream& cout, const Client& client);
 };
 
 

@@ -57,11 +57,25 @@ void Client::afisareCos()
     }
 }
 
-void Client::setDateClient() {
+istream& operator>>(istream& cin, Client& client) {
     cout << "Nume: ";
-    cin >> nume;
+    cin >> client.nume;
     cout << "Telefon: ";
-    cin >> telefon;
+    cin >> client.telefon;
     cout << "Varsta: ";
-    cin >> varsta;
+    cin >> client.varsta;
+
+    return cin;
+}
+
+ostream& operator<<(ostream& cout, const Client& client)
+{
+    cout << "Nume: ";
+    cout << client.nume << "\n";
+    cout << "Telefon: ";
+    cout << client.telefon << "\n";
+    cout << "Varsta: ";
+    cout << client.varsta << "\n";
+
+    return cout;
 }

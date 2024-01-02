@@ -29,14 +29,13 @@ int main() {
 
 	
 	if (tipUser == "C") {
-		cout << "Bine ai venit in magazinul " << magazin.getNume() << "\n";
+		cout << "Bine ai venit in magazinul " << magazin.getNume() << ", " << client.getNume() << "\n";
 
 		while (1) {
 			int optiune;
 			cout << "\nCe doresti sa faci in magazinul nostru azi?\n";
 			client.afiseazaMeniu();
 			while (cin >> optiune) {
-				client.afiseazaMeniu();
 				if (optiune != 1 && optiune != 2 && optiune != 3 && optiune != 4 && optiune != 5 && optiune != 6 && optiune != 0)
 					cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
 				else
@@ -57,6 +56,9 @@ int main() {
 			}
 			else if (optiune == 4) {
 				//4. Modifica datele personale
+				cin >> client;
+				cout << "\nDatele tale au fost modificate astfel:\n";
+				cout << client;
 			}
 			else if (optiune == 5) {
 				//5. Trimite comanda
@@ -78,7 +80,6 @@ int main() {
 			cout << "\nCe doresti sa faci in magazinul nostru azi?\n";
 			magazin.afiseazaMeniu();
 			while (cin >> optiune) {
-				magazin.afiseazaMeniu();
 				if (optiune != 1 && optiune != 2 && optiune != 3 && optiune != 4 && optiune != 5 && optiune != 0)
 					cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
 				else

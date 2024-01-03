@@ -6,6 +6,7 @@ using namespace std;
 
 class Subler : public Produs
 {
+protected:
     string tip;
     string culoare;
     int distantaMaxima;

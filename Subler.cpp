@@ -66,3 +66,37 @@ void Subler::editareProdus() {
 	cout << "Distanta maxima: ";
 	cin >> distantaMaxima;
 }
+
+void Subler::serialize(ofstream& fout) const {
+	Produs::serialize(fout);
+	fout.write((char*)&distantaMaxima, sizeof(distantaMaxima));
+
+	// Serialize strings by writing their size and characters
+	int tipSize = tip.size();
+	fout.write((char*)&tipSize, sizeof(tipSize));
+	fout.write(tip.c_str(), tipSize);
+
+	int culoareSize = culoare.size();
+	fout.write((char*)&culoareSize, sizeof(culoareSize));
+	fout.write(culoare.c_str(), culoareSize);
+}
+
+// Deserialization method
+void Subler::deserialize(ifstream& fin) {
+	Produs::deserialize(fin);
+	fin.read((char*)&distantaMaxima, sizeof(distantaMaxima));
+
+	// Deserialize strings by reading their size and characters
+	int tipSize;
+	fin.read((char*)&tipSize, sizeof(tipSize));
+	char buffer[100];  // Adjust the size accordingly
+	fin.read(buffer, tipSize);
+	buffer[tipSize] = '\0';
+	tip = buffer;
+
+	int culoareSize;
+	fin.read((char*)&culoareSize, sizeof(culoareSize));
+	fin.read(buffer, culoareSize);
+	buffer[culoareSize] = '\0';
+	culoare = buffer;
+}

@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -39,5 +41,8 @@ public:
 	// metode virtuale de implementat pentru fiecare produs in parte
 	virtual void afisareDetalii();
 	virtual void editareProdus();
+
+	virtual void serialize(ofstream& fout) const;
+	virtual void deserialize(ifstream& fin);
 };
 

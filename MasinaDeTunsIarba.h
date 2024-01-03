@@ -20,6 +20,7 @@ public:
 
     void setCuloare(string culoare);
     string getCuloare();
+    string getNume();
 
     void setMarimeRezervor(int marimeRezervor);
     int getMarimeRezervor();

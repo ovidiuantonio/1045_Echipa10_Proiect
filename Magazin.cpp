@@ -23,9 +23,6 @@ Magazin::Magazin(string nume, int nrProduseMagazin, Produs** produseMagazin)
 
 Magazin::~Magazin()
 {
-	for (int i = 0; i < nrProduseMagazin - 1; i++)
-		delete produseMagazin[i];
-
 	delete[] produseMagazin;
 }
 
@@ -45,32 +42,31 @@ int Magazin::getNrProduse()
 }
 
 void Magazin::writeFileProduseMagazin() {
-	ofstream fout("ProduseMagazin.dat", ios::binary | ios::trunc);
+	ofstream fout("ProduseMagazin.dat", ios::out | ios::trunc);
 
 	//scriu nr de produse
 	fout.write((char*)&nrProduseMagazin, sizeof(nrProduseMagazin));
 	for (int i = 0; i < nrProduseMagazin; i++) {
 		int tip;
-		if (produseMagazin[i]->getNume() == "Subler")
+		string numeProdus = produseMagazin[i]->getNume();
+		if (numeProdus == "Subler")
 			tip = 1;
-		else if (produseMagazin[i]->getNume() == "Masina de tuns iarba")
+		else if (numeProdus == "Masina de tuns iarba")
 			tip = 2;
 
 		//scriu tipul de produs
-		fout.write((char*)(&tip), sizeof(tip));
+		fout.write((char*)&tip, sizeof(tip));
 		//scriu produsul
-		fout.write((char*)&produseMagazin[i], sizeof(Produs));
+		produseMagazin[i]->serialize(fout);
 	}
 	fout.close();
 }
 
 void Magazin::readFileProduseMagazin() {
-	ifstream fin("ProduseMagazin.dat");
+	ifstream fin("ProduseMagazin.dat", ios::in);
 
 	//citesc nr de produse
-	char nrpm;
-	fin.read((char*)(&nrpm), sizeof(nrpm));
-	nrProduseMagazin = (int)nrpm;
+	fin.read((char*)&nrProduseMagazin, sizeof(nrProduseMagazin));
 
 	if (nrProduseMagazin < 0) {
 		nrProduseMagazin = 0;
@@ -81,17 +77,16 @@ void Magazin::readFileProduseMagazin() {
 
 	for (int i = 0; i < nrProduseMagazin; i++) {
 		//citesc tipul produsului
-		char tipCh;
-		fin.read((char*)(&tipCh), sizeof(tipCh));
-		int tip = (int)tipCh;
-		Produs* produs;
+		int tip;
+		fin.read((char*)&tip, sizeof(tip));
+		Produs* produs = nullptr;
 		if (tip == 1)
 			produs = new Subler;
 		else if (tip == 2)
 			produs = new MasinaDeTunsIarba;
 
 		//citesc produsul
-		fin.read((char*)&produs, sizeof(produs));
+		produs->deserialize(fin);
 		aux[i] = produs;
 	}
 
@@ -100,14 +95,11 @@ void Magazin::readFileProduseMagazin() {
 }
 
 void Magazin::adaugaProdusMagazin(Produs* produs) {
-	this->nrProduseMagazin = this->nrProduseMagazin + 1;
-	Produs** aux = new Produs * [nrProduseMagazin];
+	cout << nrProduseMagazin;
+	Produs** aux = new Produs * [++nrProduseMagazin];
 	for (int i = 0; i < nrProduseMagazin - 1; i++)
 		aux[i] = produseMagazin[i];
 	aux[nrProduseMagazin - 1] = produs;
-
-	for (int i = 0; i < nrProduseMagazin - 1; i++)
-		delete produseMagazin[i];
 
 	delete[] produseMagazin;
 	produseMagazin = aux;
@@ -141,7 +133,6 @@ void Magazin::stergereProdusMagazin(Produs* produs) {
 
 	//dupa ce sterg produsul updatez fisierul
 	Magazin::writeFileProduseMagazin();
-
 }
 
 void Magazin::vizualizareProduse() {
@@ -158,7 +149,7 @@ void Magazin::afiseazaMeniu()
 
 void Magazin::afiseazaMeniuAdauga()
 {
-	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n\n\n0. Inchide aplicatia\n";
+	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n\n\n0. Inapoi\n";
 }
 
 Magazin Magazin::operator-=(Produs* p) {

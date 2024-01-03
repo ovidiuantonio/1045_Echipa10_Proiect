@@ -68,7 +68,6 @@ Produs::Produs()
 	cantitate = 0;
 	pret = 1;
 	rating = 1;
-	nume = "Produs-Default";
 	marca = "Samsung";
 	descriere = "Lorem Ipsum";
 }
@@ -102,4 +101,50 @@ void Produs::editareProdus() {
 	cin>> marca;
 	cout << "Descriere: ";
 	cin>> descriere;
+}
+
+void Produs::serialize(ofstream& fout) const {
+	fout.write((char*)&cantitate, sizeof(cantitate));
+	fout.write((char*)&pret, sizeof(pret));
+	fout.write((char*)&rating, sizeof(rating));
+
+	// Serialize strings by writing their size and characters
+	int numeSize = nume.size();
+	fout.write((char*)&numeSize, sizeof(numeSize));
+	fout.write(nume.c_str(), numeSize);
+
+	int marcaSize = marca.size();
+	fout.write((char*)&marcaSize, sizeof(marcaSize));
+	fout.write(marca.c_str(), marcaSize);
+
+	int descriereSize = descriere.size();
+	fout.write((char*)&descriereSize, sizeof(descriereSize));
+	fout.write(descriere.c_str(), descriereSize);
+}
+
+// Deserialization method
+void Produs::deserialize(ifstream& fin) {
+	fin.read((char*)&cantitate, sizeof(cantitate));
+	fin.read((char*)&pret, sizeof(pret));
+	fin.read((char*)&rating, sizeof(rating));
+
+	// Deserialize strings by reading their size and characters
+	int numeSize;
+	fin.read((char*)&numeSize, sizeof(numeSize));
+	char buffer[100];  // Adjust the size accordingly
+	fin.read(buffer, numeSize);
+	buffer[numeSize] = '\0';
+	nume = buffer;
+
+	int marcaSize;
+	fin.read((char*)&marcaSize, sizeof(marcaSize));
+	fin.read(buffer, marcaSize);
+	buffer[marcaSize] = '\0';
+	marca = buffer;
+
+	int descriereSize;
+	fin.read((char*)&descriereSize, sizeof(descriereSize));
+	fin.read(buffer, descriereSize);
+	buffer[descriereSize] = '\0';
+	descriere = buffer;
 }

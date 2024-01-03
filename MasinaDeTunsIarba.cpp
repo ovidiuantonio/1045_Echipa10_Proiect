@@ -36,6 +36,11 @@ string MasinaDeTunsIarba::getCuloare()
 	return culoare;
 }
 
+string MasinaDeTunsIarba::getNume()
+{
+	return nume;
+}
+
 void MasinaDeTunsIarba::setMarimeRezervor(int marimeRezervor)
 {
 	if (marimeRezervor > 0)

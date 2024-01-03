@@ -27,5 +27,8 @@ public:
 
     void afisareDetalii();
     void editareProdus();
+
+    void serialize(ofstream& fout) const;
+    void deserialize(ifstream& fin);
 };
 

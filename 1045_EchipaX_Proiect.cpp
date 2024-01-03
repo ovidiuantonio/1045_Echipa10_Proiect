@@ -89,33 +89,33 @@ int main() {
 			// VA ROG SA FACETI OPTIUNILE IN FUNCTII DIFERITE!
 
 			if (optiune == 1) {
-				//1. Adauga produse in magazin
-				Produs* produs;
-				int optiuneAdauga;
-				cout << "\nCe produs doresti sa adaugi?\n";
-				magazin.afiseazaMeniuAdauga();
-				while (cin >> optiuneAdauga) {
-					if (optiune != 1 && optiune != 2 && optiune != 0)
-						cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
-					else
+				while (1) {
+					//1. Adauga produse in magazin
+					Produs* produs;
+					int optiuneAdauga;
+					cout << "\nCe produs doresti sa adaugi?\n";
+					magazin.afiseazaMeniuAdauga();
+					while (cin >> optiuneAdauga) {
+						if (optiune != 1 && optiune != 2 && optiune != 0)
+							cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
+						else
+							break;
+					}
+
+					if (optiuneAdauga == 1) {
+						produs = new Subler;
+					}
+					else if (optiuneAdauga == 2) {
+						produs = new MasinaDeTunsIarba;
+					}
+					else {
 						break;
-				}
+					}
 
-				if (optiuneAdauga == 1) {
-					produs = new Subler;
-				} else if (optiuneAdauga == 2) {
-					produs = new MasinaDeTunsIarba;
+					produs->editareProdus();
+					magazin.adaugaProdusMagazin(produs);
+					cout << "Produsul a fost adaugat cu succes!\n";
 				}
-				else {
-					break;
-				}
-
-				produs->editareProdus();
-				magazin.adaugaProdusMagazin(produs);
-				cout << "Produsul a fost adaugat cu succes!\n";
-
-				delete produs;
-				produs = nullptr;
 			}
 			else if (optiune == 2) {
 				//2. Editare Produse magazin

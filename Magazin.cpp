@@ -47,6 +47,7 @@ int Magazin::getNrProduse()
 void Magazin::writeFileProduseMagazin() {
 	ofstream fout("ProduseMagazin.dat", ios::binary | ios::trunc);
 
+	//scriu nr de produse
 	fout.write((char*)&nrProduseMagazin, sizeof(nrProduseMagazin));
 	for (int i = 0; i < nrProduseMagazin; i++) {
 		int tip;
@@ -55,15 +56,18 @@ void Magazin::writeFileProduseMagazin() {
 		else if (produseMagazin[i]->getNume() == "Masina de tuns iarba")
 			tip = 2;
 
+		//scriu tipul de produs
 		fout.write((char*)(&tip), sizeof(tip));
+		//scriu produsul
 		fout.write((char*)&produseMagazin[i], sizeof(Produs));
 	}
 	fout.close();
 }
 
 void Magazin::readFileProduseMagazin() {
-	ifstream fin("ProduseMagazin.txt");
+	ifstream fin("ProduseMagazin.dat");
 
+	//citesc nr de produse
 	char nrpm;
 	fin.read((char*)(&nrpm), sizeof(nrpm));
 	nrProduseMagazin = (int)nrpm;
@@ -76,6 +80,7 @@ void Magazin::readFileProduseMagazin() {
 	Produs** aux = new Produs * [nrProduseMagazin];
 
 	for (int i = 0; i < nrProduseMagazin; i++) {
+		//citesc tipul produsului
 		char tipCh;
 		fin.read((char*)(&tipCh), sizeof(tipCh));
 		int tip = (int)tipCh;
@@ -85,6 +90,7 @@ void Magazin::readFileProduseMagazin() {
 		else if (tip == 2)
 			produs = new MasinaDeTunsIarba;
 
+		//citesc produsul
 		fin.read((char*)&produs, sizeof(produs));
 		aux[i] = produs;
 	}
@@ -106,6 +112,7 @@ void Magazin::adaugaProdusMagazin(Produs* produs) {
 	delete[] produseMagazin;
 	produseMagazin = aux;
 
+	//dupa ce adaug produsul updatez fisierul
 	Magazin::writeFileProduseMagazin();
 }
 
@@ -131,6 +138,9 @@ void Magazin::stergereProdusMagazin(Produs* produs) {
 		delete[] produseMagazin;
 		produseMagazin = aux;
 	}
+
+	//dupa ce sterg produsul updatez fisierul
+	Magazin::writeFileProduseMagazin();
 
 }
 
@@ -169,6 +179,9 @@ Magazin Magazin::operator-=(Produs* p) {
 		delete[] produseMagazin;
 		produseMagazin = aux;
 	}
+
+	//dupa ce sterg produsul updatez fisierul
+	Magazin::writeFileProduseMagazin();
 
 	return *this;
 }

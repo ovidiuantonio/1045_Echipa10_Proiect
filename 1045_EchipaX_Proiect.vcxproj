@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bormasina.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Magazin.h" />
     <ClInclude Include="MasinaDeTunsIarba.h" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1045_EchipaX_Proiect.cpp" />
+    <ClCompile Include="Bormasina.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Magazin.cpp" />
     <ClCompile Include="MasinaDeTunsIarba.cpp" />

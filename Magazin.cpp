@@ -53,6 +53,8 @@ void Magazin::writeFileProduseMagazin() {
 			tip = 1;
 		else if (numeProdus == "Masina de tuns iarba")
 			tip = 2;
+		else if (numeProdus == "Bormasina")
+			tip = 3;
 
 		//scriu tipul de produs
 		fout.write((char*)&tip, sizeof(tip));
@@ -84,6 +86,8 @@ void Magazin::readFileProduseMagazin() {
 			produs = new Subler;
 		else if (tip == 2)
 			produs = new MasinaDeTunsIarba;
+		else if (tip == 3)
+			produs = new Bormasina;
 
 		//citesc produsul
 		produs->deserialize(fin);
@@ -149,7 +153,7 @@ void Magazin::afiseazaMeniu()
 
 void Magazin::afiseazaMeniuAdauga()
 {
-	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n\n\n0. Inapoi\n";
+	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n3. Adauga o bormasina\n\n\n0. Inapoi\n";
 }
 
 Magazin Magazin::operator-=(Produs* p) {

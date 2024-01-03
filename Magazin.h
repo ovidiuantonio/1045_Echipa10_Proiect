@@ -1,6 +1,7 @@
 #pragma once
 #include "Produs.h"
 #include "Subler.h"
+#include "Bormasina.h"
 #include "MasinaDeTunsIarba.h"
 #include <iostream>
 #include <fstream>

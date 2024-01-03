@@ -33,6 +33,9 @@
     <ClInclude Include="MasinaDeTunsIarba.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Bormasina.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1045_EchipaX_Proiect.cpp">
@@ -53,5 +56,11 @@
     <ClCompile Include="MasinaDeTunsIarba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bormasina.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ProduseMagazin.dat" />
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@
 #include "Magazin.h"
 #include "Subler.h"
 #include "MasinaDeTunsIarba.h"
+#include "Bormasina.h"
 
 using namespace std;
 
@@ -96,7 +97,7 @@ int main() {
 					cout << "\nCe produs doresti sa adaugi?\n";
 					magazin.afiseazaMeniuAdauga();
 					while (cin >> optiuneAdauga) {
-						if (optiune != 1 && optiune != 2 && optiune != 0)
+						if (optiune != 1 && optiune != 2 && optiune != 3 && optiune != 0)
 							cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
 						else
 							break;
@@ -107,6 +108,9 @@ int main() {
 					}
 					else if (optiuneAdauga == 2) {
 						produs = new MasinaDeTunsIarba;
+					}
+					else if (optiuneAdauga == 3) {
+						produs = new Bormasina;
 					}
 					else {
 						break;

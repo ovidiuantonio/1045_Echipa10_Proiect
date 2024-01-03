@@ -2,6 +2,7 @@
 
 MasinaDeTunsIarba::MasinaDeTunsIarba()
 {
+	nume = "Masina de tuns iarba";
 	serie = "xc230";
 	culoare = "albastru";
 	marimeRezervor = 4.2;
@@ -52,11 +53,15 @@ void MasinaDeTunsIarba::afisareDetalii()
 }
 
   void MasinaDeTunsIarba::editareProdus() {
-	Produs::editareProdus();
+	this->Produs::editareProdus();
+	cout << "Serie: ";
 	cin >> serie;
+	cout << "Culoare: ";
 	cin >> culoare;
+	cout << "Marime rezervor: ";
 	cin >> marimeRezervor;
 }
+
   ofstream& operator<<(ofstream& out, MasinaDeTunsIarba& m) {
 	  out << m.nume;
 	  out << m.serie;

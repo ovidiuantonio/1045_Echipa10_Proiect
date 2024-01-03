@@ -19,6 +19,7 @@ public:
 
     void setCuloare(string culoare);
     string getCuloare();
+    string getNume();
 
     void setDistantaMaxima(int distantaMaxima);
     int getDistantaMaxima();

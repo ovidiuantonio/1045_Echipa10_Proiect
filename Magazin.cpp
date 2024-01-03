@@ -1,6 +1,4 @@
 #include "Magazin.h"
-#include<fstream>
-
 
 Magazin::Magazin() {
 	nume = "Default";
@@ -36,18 +34,68 @@ string Magazin::getNume()
 	return nume;
 }
 
-Produs** Magazin::getProduseMagazin()
-{
-	return produseMagazin;
-}
-
 void Magazin::setNume(string nume)
 {
 	this->nume = nume;
 }
 
+int Magazin::getNrProduse()
+{
+	return nrProduseMagazin;
+}
+
+void Magazin::writeFileProduseMagazin() {
+	ofstream fout("ProduseMagazin.dat", ios::binary | ios::trunc);
+
+	fout.write((char*)&nrProduseMagazin, sizeof(nrProduseMagazin));
+	for (int i = 0; i < nrProduseMagazin; i++) {
+		int tip;
+		if (produseMagazin[i]->getNume() == "Subler")
+			tip = 1;
+		else if (produseMagazin[i]->getNume() == "Masina de tuns iarba")
+			tip = 2;
+
+		fout.write((char*)(&tip), sizeof(tip));
+		fout.write((char*)&produseMagazin[i], sizeof(Produs));
+	}
+	fout.close();
+}
+
+void Magazin::readFileProduseMagazin() {
+	ifstream fin("ProduseMagazin.txt");
+
+	char nrpm;
+	fin.read((char*)(&nrpm), sizeof(nrpm));
+	nrProduseMagazin = (int)nrpm;
+
+	if (nrProduseMagazin < 0) {
+		nrProduseMagazin = 0;
+		produseMagazin = nullptr;
+	}
+
+	Produs** aux = new Produs * [nrProduseMagazin];
+
+	for (int i = 0; i < nrProduseMagazin; i++) {
+		char tipCh;
+		fin.read((char*)(&tipCh), sizeof(tipCh));
+		int tip = (int)tipCh;
+		Produs* produs;
+		if (tip == 1)
+			produs = new Subler;
+		else if (tip == 2)
+			produs = new MasinaDeTunsIarba;
+
+		fin.read((char*)&produs, sizeof(produs));
+		aux[i] = produs;
+	}
+
+	produseMagazin = aux;
+	fin.close();
+}
+
 void Magazin::adaugaProdusMagazin(Produs* produs) {
-	Produs** aux = new Produs * [++nrProduseMagazin];
+	this->nrProduseMagazin = this->nrProduseMagazin + 1;
+	Produs** aux = new Produs * [nrProduseMagazin];
 	for (int i = 0; i < nrProduseMagazin - 1; i++)
 		aux[i] = produseMagazin[i];
 	aux[nrProduseMagazin - 1] = produs;
@@ -57,6 +105,8 @@ void Magazin::adaugaProdusMagazin(Produs* produs) {
 
 	delete[] produseMagazin;
 	produseMagazin = aux;
+
+	Magazin::writeFileProduseMagazin();
 }
 
 void Magazin::editareProdusMagazin(Produs* produs) {
@@ -72,8 +122,14 @@ void Magazin::stergereProdusMagazin(Produs* produs) {
 	if (i <nrProduseMagazin)
 	{
 		nrProduseMagazin = nrProduseMagazin - 1;
+		Produs** aux = new Produs * [nrProduseMagazin];
+		for (int j = 0; j < i; j++)
+			aux[j] = produseMagazin[j];
 		for (int j = i; j < nrProduseMagazin; j++)
-			produseMagazin[j] = produseMagazin[j + 1];
+			aux[j] = produseMagazin[j + 1];
+
+		delete[] produseMagazin;
+		produseMagazin = aux;
 	}
 
 }
@@ -90,18 +146,29 @@ void Magazin::afiseazaMeniu()
 	cout << "1. Adauga un produs in magazin\n2. Editeaza un produs din magazin\n3. Sterge un produs din magazin\n4. Prelucreaza comenzile\n5. Realizeaza raportul tuturor comenzilor\n\n\n0. Inchide aplicatia\n";
 }
 
-	Magazin Magazin::operator-=(Produs* p) {
-		int i;
-		for (i = 0; i < nrProduseMagazin; i++)
-			if (produseMagazin[i] == p)
-				break;
+void Magazin::afiseazaMeniuAdauga()
+{
+	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n\n\n0. Inchide aplicatia\n";
+}
 
-		if (i < nrProduseMagazin)
-		{
-			nrProduseMagazin = nrProduseMagazin - 1;
-			for (int j = i; j < nrProduseMagazin; j++)
-				produseMagazin[j] = produseMagazin[j + 1];
-		}
+Magazin Magazin::operator-=(Produs* p) {
+	int i;
+	for (i = 0; i < nrProduseMagazin; i++)
+		if (produseMagazin[i] == p)
+			break;
+
+	if (i < nrProduseMagazin)
+	{
+		nrProduseMagazin = nrProduseMagazin - 1;
+		Produs** aux = new Produs * [nrProduseMagazin];
+		for (int j = 0; j < i; j++)
+			aux[j] = produseMagazin[j];
+		for (int j = i; j < nrProduseMagazin; j++)
+			aux[j] = produseMagazin[j + 1];
+
+		delete[] produseMagazin;
+		produseMagazin = aux;
 	}
 
-	ofstream fisier("fisier.dat");
+	return *this;
+}

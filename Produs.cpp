@@ -92,10 +92,14 @@ void Produs::afisareDetalii()
 }
 
 void Produs::editareProdus() {
+	cout << "Cantitate: ";
 	cin>> cantitate;
+	cout << "Pret: ";
 	cin>> pret;
+	cout << "Rating ( / 5): ";
 	cin>> rating;
-	cin>> nume;
+	cout << "Marca: ";
 	cin>> marca;
+	cout << "Descriere: ";
 	cin>> descriere;
 }

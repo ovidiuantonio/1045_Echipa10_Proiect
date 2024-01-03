@@ -1,11 +1,14 @@
 #pragma once
 #include "Produs.h"
+#include "Subler.h"
+#include "MasinaDeTunsIarba.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 class Magazin
 {
-private:
+protected:
 	string nume;
 	int nrProduseMagazin;
 	Produs** produseMagazin;
@@ -16,13 +19,16 @@ public:
 	~Magazin();
 
 	string getNume();
-	Produs** getProduseMagazin();
+	int getNrProduse();
 
 	void setNume(string nume);
 
+	void writeFileProduseMagazin();
+	void readFileProduseMagazin();
 	void adaugaProdusMagazin(Produs* produs);
 
 	void afiseazaMeniu();
+	void afiseazaMeniuAdauga();
 	void vizualizareProduse();
 	void editareProdusMagazin(Produs* produs);
 	void stergereProdusMagazin(Produs* produs);

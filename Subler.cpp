@@ -2,6 +2,7 @@
 
 Subler::Subler()
 {
+	nume = "Subler";
 	tip = "electric";
 	culoare = "negru";
 	distantaMaxima = 100;
@@ -35,6 +36,11 @@ string Subler::getCuloare()
 	return culoare;
 }
 
+string Subler::getNume()
+{
+	return nume;
+}
+
 void Subler::setDistantaMaxima(int distantaMaxima)
 {
 	if (distantaMaxima > 0)
@@ -52,8 +58,11 @@ void Subler::afisareDetalii()
 }
 
 void Subler::editareProdus() {
-	Produs::editareProdus();
+	this->Produs::editareProdus();
+	cout << "Tip: ";
 	cin >> tip;
+	cout << "Culoare: ";
 	cin >> culoare;
+	cout << "Distanta maxima: ";
 	cin >> distantaMaxima;
 }

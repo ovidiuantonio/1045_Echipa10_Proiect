@@ -12,11 +12,8 @@ int main() {
 	string tipUser;
 
 	Magazin magazin("VOMMA", 0, nullptr);
-	Produs* subler = new Subler(10, 107, 4.89, "Subler", "sugubat", "Cei mai bun subler pentru mesterii adevarati!", "electric", "negru", 150);
-	magazin.adaugaProdusMagazin(subler);
-	Produs* masinaDeTunsIarba = new MasinaDeTunsIarba(2, 450, 4.50, "Masina de tuns Iarba", "Heinner", "Masina de tuns Heinner tunde iarba cel mai bine!", "xc230", "albastru", 4.2);
-	magazin.adaugaProdusMagazin(masinaDeTunsIarba);
-
+	magazin.readFileProduseMagazin();
+	
 	Client client("Ovidiu", "0752925119", 18, 0, nullptr, nullptr);
 
 	// primim tipul de utilizator si nu permitem introducerea altor valori in afar de C si A
@@ -93,6 +90,32 @@ int main() {
 
 			if (optiune == 1) {
 				//1. Adauga produse in magazin
+				Produs* produs;
+				int optiuneAdauga;
+				cout << "\nCe produs doresti sa adaugi?\n";
+				magazin.afiseazaMeniuAdauga();
+				while (cin >> optiuneAdauga) {
+					if (optiune != 1 && optiune != 2 && optiune != 0)
+						cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
+					else
+						break;
+				}
+
+				if (optiuneAdauga == 1) {
+					produs = new Subler;
+				} else if (optiuneAdauga == 2) {
+					produs = new MasinaDeTunsIarba;
+				}
+				else {
+					break;
+				}
+
+				produs->editareProdus();
+				magazin.adaugaProdusMagazin(produs);
+				cout << "Produsul a fost adaugat cu succes!\n";
+
+				delete produs;
+				produs = nullptr;
 			}
 			else if (optiune == 2) {
 				//2. Editare Produse magazin

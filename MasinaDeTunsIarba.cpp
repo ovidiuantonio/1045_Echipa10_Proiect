@@ -60,9 +60,9 @@ void MasinaDeTunsIarba::afisareDetalii()
   void MasinaDeTunsIarba::editareProdus() {
 	this->Produs::editareProdus();
 	cout << "Serie: ";
-	cin >> serie;
+	getline(cin, serie);
 	cout << "Culoare: ";
-	cin >> culoare;
+	getline(cin, culoare);
 	cout << "Marime rezervor: ";
 	cin >> marimeRezervor;
 }

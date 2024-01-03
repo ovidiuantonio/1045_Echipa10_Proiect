@@ -97,10 +97,12 @@ void Produs::editareProdus() {
 	cin>> pret;
 	cout << "Rating ( / 5): ";
 	cin>> rating;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "Marca: ";
-	cin>> marca;
+	getline(cin, marca);
 	cout << "Descriere: ";
-	cin>> descriere;
+	getline(cin, descriere);
+
 }
 
 void Produs::serialize(ofstream& fout) const {

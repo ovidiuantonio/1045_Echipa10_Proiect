@@ -60,9 +60,9 @@ void Subler::afisareDetalii()
 void Subler::editareProdus() {
 	this->Produs::editareProdus();
 	cout << "Tip: ";
-	cin >> tip;
+	getline(cin, tip);
 	cout << "Culoare: ";
-	cin >> culoare;
+	getline(cin, culoare);
 	cout << "Distanta maxima: ";
 	cin >> distantaMaxima;
 }

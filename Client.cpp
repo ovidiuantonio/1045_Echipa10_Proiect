@@ -47,9 +47,6 @@ Client::Client(string nume, string telefon, int varsta, int nrProduseCos, int* c
 
 Client::~Client()
 {
-    for (int i = 0; i < nrProduseCos - 1; i++)
-        delete produseCosClient[i];
-
     delete[] produseCosClient;
     delete[] cantitati;
 }

@@ -23,6 +23,11 @@ Magazin::Magazin(string nume, int nrProduseMagazin, Produs** produseMagazin)
 
 Magazin::~Magazin()
 {
+	for (int i = 0; i < nrProduseMagazin; i++) {
+		delete produseMagazin[i];
+		produseMagazin[i] = nullptr;
+	}
+
 	delete[] produseMagazin;
 }
 

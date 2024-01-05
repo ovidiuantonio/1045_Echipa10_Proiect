@@ -133,6 +133,10 @@ void Magazin::stergereProdusMagazin(Produs* produs) {
 		Produs** aux = new Produs * [nrProduseMagazin];
 		for (int j = 0; j < i; j++)
 			aux[j] = produseMagazin[j];
+
+		delete[] produseMagazin[i];
+		produseMagazin[i] = nullptr;
+
 		for (int j = i; j < nrProduseMagazin; j++)
 			aux[j] = produseMagazin[j + 1];
 
@@ -173,6 +177,10 @@ Magazin Magazin::operator-=(Produs* p) {
 		Produs** aux = new Produs * [nrProduseMagazin];
 		for (int j = 0; j < i; j++)
 			aux[j] = produseMagazin[j];
+
+		delete[] produseMagazin[i];
+		produseMagazin[i] = nullptr;
+
 		for (int j = i; j < nrProduseMagazin; j++)
 			aux[j] = produseMagazin[j + 1];
 

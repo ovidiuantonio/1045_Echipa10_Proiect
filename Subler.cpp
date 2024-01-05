@@ -71,7 +71,6 @@ void Subler::serialize(ofstream& fout) const {
 	Produs::serialize(fout);
 	fout.write((char*)&distantaMaxima, sizeof(distantaMaxima));
 
-	// Serialize strings by writing their size and characters
 	int tipSize = tip.size();
 	fout.write((char*)&tipSize, sizeof(tipSize));
 	fout.write(tip.c_str(), tipSize);
@@ -81,15 +80,13 @@ void Subler::serialize(ofstream& fout) const {
 	fout.write(culoare.c_str(), culoareSize);
 }
 
-// Deserialization method
 void Subler::deserialize(ifstream& fin) {
 	Produs::deserialize(fin);
 	fin.read((char*)&distantaMaxima, sizeof(distantaMaxima));
 
-	// Deserialize strings by reading their size and characters
 	int tipSize;
 	fin.read((char*)&tipSize, sizeof(tipSize));
-	char buffer[100];  // Adjust the size accordingly
+	char buffer[200]; 
 	fin.read(buffer, tipSize);
 	buffer[tipSize] = '\0';
 	tip = buffer;

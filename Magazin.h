@@ -22,6 +22,8 @@ public:
 	string getNume();
 	int getNrProduse();
 
+	Produs* getProdus(int index);
+
 	void setNume(string nume);
 
 	void writeFileProduseMagazin();

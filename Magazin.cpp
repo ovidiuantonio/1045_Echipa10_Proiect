@@ -180,3 +180,7 @@ Magazin Magazin::operator-=(Produs* p) {
 
 	return *this;
 }
+
+Produs* Magazin::getProdus(int index) {
+	return produseMagazin[index];
+}

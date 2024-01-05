@@ -70,7 +70,6 @@ void Bormasina::editareProdus() {
 void Bormasina::serialize(ofstream& fout) const {
     Produs::serialize(fout);
 
-    // Serialize strings by writing their size and characters
     int tipSize = tipAlimentare.size();
     fout.write((char*)&tipSize, sizeof(tipSize));
     fout.write(tipAlimentare.c_str(), tipSize);
@@ -79,14 +78,12 @@ void Bormasina::serialize(ofstream& fout) const {
     fout.write((char*)&areBateriaInclusa, sizeof(areBateriaInclusa));
 }
 
-// Deserialization method
 void Bormasina::deserialize(ifstream& fin) {
     Produs::deserialize(fin);
 
-    // Deserialize strings by reading their size and characters
     int tipSize;
     fin.read((char*)&tipSize, sizeof(tipSize));
-    char buffer[100];  // Adjust the size accordingly
+    char buffer[100]; 
     fin.read(buffer, tipSize);
     buffer[tipSize] = '\0';
     tipAlimentare = buffer;

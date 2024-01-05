@@ -106,13 +106,16 @@ void Produs::editareProdus() {
 }
 
 void Produs::serialize(ofstream& fout) const {
+	//asa scriu elementele de tip int, float etc, elem numerice
 	fout.write((char*)&cantitate, sizeof(cantitate));
 	fout.write((char*)&pret, sizeof(pret));
 	fout.write((char*)&rating, sizeof(rating));
 
-	// Serialize strings by writing their size and characters
+	// asa scriu elementele de tip string
+	//le scriu marimea
 	int numeSize = nume.size();
 	fout.write((char*)&numeSize, sizeof(numeSize));
+	//si dupa le scriu pe ele
 	fout.write(nume.c_str(), numeSize);
 
 	int marcaSize = marca.size();
@@ -124,16 +127,16 @@ void Produs::serialize(ofstream& fout) const {
 	fout.write(descriere.c_str(), descriereSize);
 }
 
-// Deserialization method
 void Produs::deserialize(ifstream& fin) {
+	//asa citesc elem numerice
 	fin.read((char*)&cantitate, sizeof(cantitate));
 	fin.read((char*)&pret, sizeof(pret));
 	fin.read((char*)&rating, sizeof(rating));
 
-	// Deserialize strings by reading their size and characters
+	// asa citesc elem de tip string
 	int numeSize;
 	fin.read((char*)&numeSize, sizeof(numeSize));
-	char buffer[100];  // Adjust the size accordingly
+	char buffer[100];  
 	fin.read(buffer, numeSize);
 	buffer[numeSize] = '\0';
 	nume = buffer;

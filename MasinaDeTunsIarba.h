@@ -1,7 +1,6 @@
 #pragma once
 #include "Produs.h"
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
@@ -28,5 +27,8 @@ public:
     void afisareDetalii();
     void editareProdus();
     friend ofstream& operator<<(ofstream& out, MasinaDeTunsIarba& m);
+
+    virtual void serialize(ofstream& fout) const;
+    virtual void deserialize(ifstream& fin);
 };
 

@@ -67,6 +67,39 @@ void MasinaDeTunsIarba::afisareDetalii()
 	cin >> marimeRezervor;
 }
 
+  void MasinaDeTunsIarba::serialize(ofstream& fout) const
+  {
+	  Produs::serialize(fout);
+	  fout.write((char*)&marimeRezervor, sizeof(marimeRezervor));
+
+	  int serieSize = serie.size();
+	  fout.write((char*)&serieSize, sizeof(serieSize));
+	  fout.write(serie.c_str(), serieSize);
+
+	  int culoareSize = culoare.size();
+	  fout.write((char*)&culoareSize, sizeof(culoareSize));
+	  fout.write(culoare.c_str(), culoareSize);
+  }
+
+  void MasinaDeTunsIarba::deserialize(ifstream& fin)
+  {
+	  Produs::deserialize(fin);
+	  fin.read((char*)&marimeRezervor, sizeof(marimeRezervor));
+
+	  int serieSize;
+	  fin.read((char*)&serieSize, sizeof(serieSize));
+	  char buffer[100];
+	  fin.read(buffer, serieSize);
+	  buffer[serieSize] = '\0';
+	  serie = buffer;
+
+	  int culoareSize;
+	  fin.read((char*)&culoareSize, sizeof(culoareSize));
+	  fin.read(buffer, culoareSize);
+	  buffer[culoareSize] = '\0';
+	  culoare = buffer;
+  }
+
   ofstream& operator<<(ofstream& out, MasinaDeTunsIarba& m) {
 	  out << m.nume;
 	  out << m.serie;

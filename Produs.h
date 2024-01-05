@@ -26,6 +26,8 @@ public:
 	float getRating();
 
 	void setNume(string nume);
+
+	//de implementat pentru fiecare produs
 	string getNume();
 
 	void setMarca(string marca);
@@ -42,7 +44,9 @@ public:
 	virtual void afisareDetalii();
 	virtual void editareProdus();
 
+	//metoda folosita pentru a scrie in fisier - de implementat pentru toate clasele!!
 	virtual void serialize(ofstream& fout) const;
+	//metoda folosita pentru a citi din fisier - de implementat pentru toate clasele!!
 	virtual void deserialize(ifstream& fin);
 };
 

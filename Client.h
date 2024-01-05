@@ -24,6 +24,7 @@ public:
 	void afiseazaMeniu();
 
 	string getNume();
+	int getNrProduseCos();
 
 	friend istream& operator>>(istream& cin, Client& client);
 	friend ostream& operator<<(ostream& cout, const Client& client);

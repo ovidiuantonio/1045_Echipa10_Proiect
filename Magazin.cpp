@@ -148,6 +148,7 @@ void Magazin::stergereProdusMagazin(Produs* produs) {
 	Magazin::writeFileProduseMagazin();
 }
 
+
 void Magazin::vizualizareProduse() {
 	cout << "Produsele disponibile in magazin sunt:\n";
 	for (int i = 0; i < nrProduseMagazin; i++) {
@@ -196,4 +197,8 @@ Magazin Magazin::operator-=(Produs* p) {
 
 Produs* Magazin::getProdus(int index) {
 	return produseMagazin[index];
+}
+
+Produs& Magazin::operator[](int index) {
+	produseMagazin[index]->editareProdus();
 }

@@ -37,5 +37,6 @@ public:
 	void stergereProdusMagazin(Produs* produs);
 
 	Magazin operator-=(Produs* p);
+	Produs& operator[](int index);
 };
 

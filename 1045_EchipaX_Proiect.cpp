@@ -160,7 +160,7 @@ int main() {
 					}
 
 					produs->editareProdus();
-					magazin.adaugaProdusMagazin(produs);
+					magazin += produs;
 					cout << "Produsul a fost adaugat cu succes!\n";
 				}
 			}
@@ -180,7 +180,7 @@ int main() {
 
 				//decrementez pentru a potrivi val introdusa cu indexul produsului
 				nrProdus--;
-				magazin.getProdus(nrProdus)->editareProdus();
+				magazin[nrProdus]->editareProdus();
 				magazin.writeFileProduseMagazin();
 			}
 			else if (optiune == 3) {
@@ -197,7 +197,7 @@ int main() {
 				}
 
 				nrProdus--;
-				//magazin[nrProdus];
+				magazin -= nrProdus;
 
 				magazin.writeFileProduseMagazin();
 			}

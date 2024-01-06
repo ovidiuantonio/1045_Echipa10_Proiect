@@ -103,50 +103,44 @@ void Magazin::readFileProduseMagazin() {
 	fin.close();
 }
 
-void Magazin::adaugaProdusMagazin(Produs* produs) {
-	cout << nrProduseMagazin;
-	Produs** aux = new Produs * [++nrProduseMagazin];
-	for (int i = 0; i < nrProduseMagazin - 1; i++)
-		aux[i] = produseMagazin[i];
-	aux[nrProduseMagazin - 1] = produs;
-
-	delete[] produseMagazin;
-	produseMagazin = aux;
-
-	//dupa ce adaug produsul updatez fisierul
-	Magazin::writeFileProduseMagazin();
-}
+//void Magazin::adaugaProdusMagazin(Produs* produs) {
+//	Produs** aux = new Produs * [++nrProduseMagazin];
+//	for (int i = 0; i < nrProduseMagazin - 1; i++)
+//		aux[i] = produseMagazin[i];
+//	aux[nrProduseMagazin - 1] = produs;
+//
+//	delete[] produseMagazin;
+//	produseMagazin = aux;
+//
+//	//dupa ce adaug produsul updatez fisierul
+//	Magazin::writeFileProduseMagazin();
+//}
 
 void Magazin::editareProdusMagazin(Produs* produs) {
 	produs->editareProdus();
 }
 
-void Magazin::stergereProdusMagazin(Produs* produs) {
-	int i;
-	for (i = 0; i < nrProduseMagazin; i++) 
-		if (produseMagazin[i] == produs)
-			break;
-
-	if (i <nrProduseMagazin)
-	{
-		nrProduseMagazin = nrProduseMagazin - 1;
-		Produs** aux = new Produs * [nrProduseMagazin];
-		for (int j = 0; j < i; j++)
-			aux[j] = produseMagazin[j];
-
-		delete[] produseMagazin[i];
-		produseMagazin[i] = nullptr;
-
-		for (int j = i; j < nrProduseMagazin; j++)
-			aux[j] = produseMagazin[j + 1];
-
-		delete[] produseMagazin;
-		produseMagazin = aux;
-	}
-
-	//dupa ce sterg produsul updatez fisierul
-	Magazin::writeFileProduseMagazin();
-}
+//void Magazin::stergereProdusMagazin(int i) {
+//	if (i <nrProduseMagazin)
+//	{
+//		nrProduseMagazin = nrProduseMagazin - 1;
+//		Produs** aux = new Produs * [nrProduseMagazin];
+//		for (int j = 0; j < i; j++)
+//			aux[j] = produseMagazin[j];
+//
+//		delete produseMagazin[i];
+//		produseMagazin[i] = nullptr;
+//
+//		for (int j = i; j < nrProduseMagazin; j++)
+//			aux[j] = produseMagazin[j + 1];
+//
+//		delete[] produseMagazin;
+//		produseMagazin = aux;
+//	}
+//
+//	//dupa ce sterg produsul updatez fisierul
+//	Magazin::writeFileProduseMagazin();
+//}
 
 
 void Magazin::vizualizareProduse() {
@@ -166,12 +160,7 @@ void Magazin::afiseazaMeniuAdauga()
 	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n3. Adauga o bormasina\n\n\n0. Inapoi\n";
 }
 
-Magazin Magazin::operator-=(Produs* p) {
-	int i;
-	for (i = 0; i < nrProduseMagazin; i++)
-		if (produseMagazin[i] == p)
-			break;
-
+void Magazin::operator-=(int i) {
 	if (i < nrProduseMagazin)
 	{
 		nrProduseMagazin = nrProduseMagazin - 1;
@@ -179,7 +168,7 @@ Magazin Magazin::operator-=(Produs* p) {
 		for (int j = 0; j < i; j++)
 			aux[j] = produseMagazin[j];
 
-		delete[] produseMagazin[i];
+		delete produseMagazin[i];
 		produseMagazin[i] = nullptr;
 
 		for (int j = i; j < nrProduseMagazin; j++)
@@ -191,18 +180,21 @@ Magazin Magazin::operator-=(Produs* p) {
 
 	//dupa ce sterg produsul updatez fisierul
 	Magazin::writeFileProduseMagazin();
-
-	return *this;
 }
 
-Produs* Magazin::getProdus(int index) {
+void Magazin::operator+=(Produs* p) {
+	Produs** aux = new Produs * [++nrProduseMagazin];
+	for (int i = 0; i < nrProduseMagazin - 1; i++)
+		aux[i] = produseMagazin[i];
+	aux[nrProduseMagazin - 1] = p;
+
+	delete[] produseMagazin;
+	produseMagazin = aux;
+
+	//dupa ce adaug produsul updatez fisierul
+	Magazin::writeFileProduseMagazin();
+}
+
+Produs* Magazin::operator[](int index) {
 	return produseMagazin[index];
-}
-
-Produs& Magazin::operator[](int index) {
-	produseMagazin[index]->editareProdus();
-}
-
-Magazin Magazin::operator+=(Produs* p) {
-	adaugaProdusMagazin(p);
 }

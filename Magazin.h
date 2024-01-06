@@ -1,4 +1,5 @@
 #pragma once
+#include "IMagazin.h"
 #include "Produs.h"
 #include "Subler.h"
 #include "Bormasina.h"
@@ -7,7 +8,7 @@
 #include <fstream>
 
 using namespace std;
-class Magazin
+class Magazin : public IMagazin
 {
 protected:
 	string nume;
@@ -22,8 +23,6 @@ public:
 	string getNume();
 	int getNrProduse();
 
-	Produs* getProdus(int index);
-
 	void setNume(string nume);
 
 	void writeFileProduseMagazin();
@@ -32,12 +31,13 @@ public:
 
 	void afiseazaMeniu();
 	void afiseazaMeniuAdauga();
+
 	void vizualizareProduse();
 	void editareProdusMagazin(Produs* produs);
-	void stergereProdusMagazin(Produs* produs);
+	void stergereProdusMagazin(int i);
 
-	Magazin operator-=(Produs* p);
-	Produs& operator[](int index);
-	Magazin operator+=(Produs* p);
+	void operator-=(int i);
+	Produs* operator[](int index);
+	void operator+=(Produs* p);
 };
 

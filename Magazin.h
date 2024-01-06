@@ -38,5 +38,6 @@ public:
 
 	Magazin operator-=(Produs* p);
 	Produs& operator[](int index);
+	Magazin operator+=(Produs* p);
 };
 

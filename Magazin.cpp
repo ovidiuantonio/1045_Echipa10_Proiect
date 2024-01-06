@@ -202,3 +202,7 @@ Produs* Magazin::getProdus(int index) {
 Produs& Magazin::operator[](int index) {
 	produseMagazin[index]->editareProdus();
 }
+
+Magazin Magazin::operator+=(Produs* p) {
+	adaugaProdusMagazin(p);
+}

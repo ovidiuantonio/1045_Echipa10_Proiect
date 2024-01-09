@@ -7,6 +7,7 @@
 #include "Subler.h"
 #include "MasinaDeTunsIarba.h"
 #include "Bormasina.h"
+#include "Laptop.h"
 
 using namespace std;
 
@@ -154,6 +155,9 @@ int main() {
 					}
 					else if (optiuneAdauga == 3) {
 						produs = new Bormasina;
+					}
+					else if (optiuneAdauga == 4) {
+						produs = new Laptop;
 					}
 					else {
 						break;

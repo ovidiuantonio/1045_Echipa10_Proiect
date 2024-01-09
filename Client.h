@@ -1,6 +1,7 @@
 #pragma once
 #include "Produs.h"
 #include <iostream>
+#include <vector> 
 
 using namespace std;
 
@@ -8,7 +9,7 @@ class Client
 {
 private:
 	// vector de pointeri la obiecte de tip produs, relatie de has-a intre client si produse
-	int* cantitati;
+	vector<int> cantitati;
 	int nrProduseCos;
 	Produs** produseCosClient;
 	string nume;

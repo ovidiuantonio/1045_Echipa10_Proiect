@@ -20,7 +20,7 @@ Client::Client() {
     telefon = "0752925119";
     varsta = 20;
     nrProduseCos = 0;
-    cantitati = nullptr;
+    cantitati.resize(0);
     produseCosClient = nullptr;
 }
 
@@ -32,30 +32,31 @@ Client::Client(string nume, string telefon, int varsta, int nrProduseCos, int* c
     this->nrProduseCos = nrProduseCos;
 
     if (nrProduseCos != 0) {
-        this->cantitati = new int [nrProduseCos];
+        this->cantitati.clear();
+        this->cantitati.resize(nrProduseCos);
         this->produseCosClient = new Produs * [nrProduseCos];
         for (int i = 0; i < nrProduseCos; i++) {
-            this->cantitati[i] = cantitati[i];
+            this->cantitati.push_back(cantitati[i]);
             this->produseCosClient[i] = produseCosClient[i];
         }
     }
     else {
-        cantitati = nullptr;
-        produseCosClient = nullptr;
+        this->cantitati.resize(0);
+        this->produseCosClient = nullptr;
     }
 }
 
 Client::~Client()
 {
     delete[] produseCosClient;
-    delete[] cantitati;
+    cantitati.clear();
 }
 
 void Client::afisareCos()
 {
     cout << "Cosul lui " << nume << " este:\n";
     for (int i = 0; i < nrProduseCos; i++) {
-        cout << i + 1 << ". " << produseCosClient[i]->getNume() << " " << produseCosClient[i]->getMarca() << "\n";
+        cout << i + 1 << ". " << produseCosClient[i]->getNume() << " " << produseCosClient[i]->getMarca() << " x " << cantitati[i] << " buc. \n";
     }
 }
 

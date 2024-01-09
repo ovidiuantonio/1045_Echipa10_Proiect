@@ -1,14 +1,14 @@
 #pragma once
-#include "IMagazin.h"
 #include "Produs.h"
 #include "Subler.h"
 #include "Bormasina.h"
 #include "MasinaDeTunsIarba.h"
+#include "Laptop.h"
 #include <iostream>
 #include <fstream>
 
 using namespace std;
-class Magazin : public IMagazin
+class Magazin
 {
 protected:
 	string nume;

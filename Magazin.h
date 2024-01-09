@@ -7,8 +7,10 @@
 #include <iostream>
 #include <fstream>
 
+#include "IMagazin.h"
+
 using namespace std;
-class Magazin
+class Magazin : public IMagazin
 {
 protected:
 	string nume;
@@ -29,8 +31,11 @@ public:
 	void readFileProduseMagazin();
 	void adaugaProdusMagazin(Produs* produs);
 
+	//metode interfata
 	void afiseazaMeniu();
 	void afiseazaMeniuAdauga();
+	void afiseazaMeniuEditare();
+	void afiseazaMeniuSterge();
 
 	void vizualizareProduse();
 	void editareProdusMagazin(Produs* produs);

@@ -1,11 +1,14 @@
 #pragma once
 #include "Produs.h"
+#include "Magazin.h"
 #include <iostream>
 #include <vector> 
 
+#include "IClient.h"
+
 using namespace std;
 
-class Client
+class Client : public IClient
 {
 private:
 	// vector de pointeri la obiecte de tip produs, relatie de has-a intre client si produse
@@ -21,8 +24,13 @@ public:
 	Client(string nume, string telefon, int varsta, int nrProduseCos, int* cantitati, Produs** produseCosClient);
 	~Client();
 
+	//metode interfata
 	void afisareCos();
 	void afiseazaMeniu();
+	void afiseazaMeniuAdauga();
+	void afiseazaMeniuSterge();
+	void afiseazaMeniuEditare();
+	void afiseazaMeniuProduseMagazin();
 
 	string getNume();
 	int getNrProduseCos();

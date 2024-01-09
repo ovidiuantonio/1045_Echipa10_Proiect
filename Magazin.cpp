@@ -148,7 +148,6 @@ void Magazin::editareProdusMagazin(Produs* produs) {
 
 
 void Magazin::vizualizareProduse() {
-	cout << "Produsele disponibile in magazin sunt:\n";
 	for (int i = 0; i < nrProduseMagazin; i++) {
 		cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << "\n";
 	}
@@ -156,12 +155,28 @@ void Magazin::vizualizareProduse() {
 
 void Magazin::afiseazaMeniu()
 {
+	system("CLS");
+	cout << "--=== Bine ai venit in magazinul " << nume << "! Ce doresti sa faci in magazinul nostru azi ? ===--\n\n";
 	cout << "1. Adauga un produs in magazin\n2. Editeaza un produs din magazin\n3. Sterge un produs din magazin\n4. Prelucreaza comenzile\n5. Realizeaza raportul tuturor comenzilor\n\n\n0. Inchide aplicatia\n";
 }
 
 void Magazin::afiseazaMeniuAdauga()
 {
+	system("CLS");
+	cout << "--=== Adauga un produs ===--\n\n";
 	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n3. Adauga o bormasina\n4. Adauga un laptop\n\n\n0. Inapoi\n";
+}
+
+void Magazin::afiseazaMeniuEditare()
+{
+	system("CLS");
+	cout << "--=== Editeaza un produs ===--\n\n";
+}
+
+void Magazin::afiseazaMeniuSterge()
+{
+	system("CLS");
+	cout << "--=== Sterge un produs ===--\n\n";
 }
 
 void Magazin::operator-=(int i) {

@@ -1,20 +1,5 @@
 #include "Client.h"
 
-string Client::getNume()
-{
-    return nume;
-}
-
-int Client::getNrProduseCos()
-{
-    return nrProduseCos;
-}
-
-void Client::afiseazaMeniu()
-{
-    cout << "1. Vizualizeaza produsele din magazin\n2. Adauga produse in cos\n3. Scoate produse din cos\n4. Modifica datele personale\n5. Trimite comanda\n6. Vizualizeaza raportul ultimei comenzi trimise\n\n\n0. Inchide aplicatia\n";
-}
-
 Client::Client() {
     nume = "Ovidiu";
     telefon = "0752925119";
@@ -50,6 +35,47 @@ Client::~Client()
 {
     delete[] produseCosClient;
     cantitati.clear();
+}
+
+string Client::getNume()
+{
+    return nume;
+}
+
+int Client::getNrProduseCos()
+{
+    return nrProduseCos;
+}
+
+void Client::afiseazaMeniu()
+{
+    system("CLS");
+    cout << "--=== Bine ai venit " << nume << "! Ce doresti sa faci in magazinul nostru azi ? ===--\n\n";
+    cout << "1. Vizualizeaza produsele din magazin\n2. Adauga produse in cos\n3. Scoate produse din cos\n4. Modifica datele personale\n5. Trimite comanda\n6. Vizualizeaza raportul ultimei comenzi trimise\n\n\n0. Inchide aplicatia\n";
+}
+
+void Client::afiseazaMeniuAdauga()
+{
+    system("CLS");
+    cout << "--=== Adauga un produs in cos ===--\n\n";
+}
+
+void Client::afiseazaMeniuSterge()
+{
+    system("CLS");
+    cout << "--=== Sterge un produs in cos ===--\n\n";
+}
+
+void Client::afiseazaMeniuEditare()
+{
+    system("CLS");
+    cout << "--=== Editeaza datele personale ===--\n\n";
+}
+
+void Client::afiseazaMeniuProduseMagazin()
+{
+    system("CLS");
+    cout << "--=== Acestea sunt produsele disponibile in magazin ===--\n\n";
 }
 
 void Client::afisareCos()

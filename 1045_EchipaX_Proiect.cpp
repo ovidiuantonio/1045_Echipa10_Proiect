@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <cstring>
 #include <stdlib.h>
 #include "Produs.h"
@@ -16,12 +16,15 @@ int main() {
 
 	Magazin magazin("VOMMA", 0, nullptr);
 	magazin.readFileProduseMagazin();
+
+	IMagazin* interfataMagazin = &magazin;
 	
 	Client client("Ovidiu", "0752925119", 18, 0, nullptr, nullptr);
+	IClient* interfataClient = &client;
 
 	// primim tipul de utilizator si nu permitem introducerea altor valori in afar de C si A
 	system("CLS");
-	cout << "Cum vrei sa accesezi magazinul " << magazin.getNume() << "? In calitate de Client(C) sau Administrator(A) ? \n";
+	cout << "Cum vrei sa accesezi magazinul " << magazin.getNume() << "? In calitate de Client (C) sau Administrator (A) ? \n";
 	while (cin >> tipUser) {
 		tipUser[0] = toupper(tipUser[0]);
 		if (tipUser != "C" && tipUser != "A") {
@@ -38,8 +41,7 @@ int main() {
 
 		while (1) {
 			int optiune;
-			cout << "\nCe doresti sa faci in magazinul nostru azi?\n";
-			client.afiseazaMeniu();
+			interfataClient->afiseazaMeniu();
 			while (cin >> optiune) {
 				if (optiune != 1 && optiune != 2 && optiune != 3 && optiune != 4 && optiune != 5 && optiune != 6 && optiune != 0)
 					cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
@@ -51,32 +53,53 @@ int main() {
 
 			if (optiune == 1) {
 				//1. Vizualizeaza produsele din magazin
-				system("CLS");
+				interfataClient->afiseazaMeniuProduseMagazin();
 				magazin.vizualizareProduse();
+
+				cout << "\n0. Inapoi\n";
+				int back;
+				while (cin >> back) {
+					if (back != 0)
+						cout << "Daca nu introduci valoarea 0 nu te vei mai putea intoarce niciodata! * ^ *\n";
+					else
+						break;
+				}
+
 			}
 			else if (optiune == 2) {
 				//2. Adauga produse in cos
 				// similar cu adauga produse in magazin, doar ca se afce pe partea de client
 				// cand se adauga un produs in cos se scade din cantitatea disp in magazin
-				system("CLS");
-				system("CLS");
-				cout << "\nCe produs vrei sa adaugi in cos?\n";
+				interfataClient->afiseazaMeniuAdauga();
 				magazin.vizualizareProduse();
+				cout << "\nIntrodu o valoare: ";
 				int nrProdus;
 				while (cin >> nrProdus) {
 					if (nrProdus < 1 && nrProdus > magazin.getNrProduse())
-						cout << "Optiune invalida!Te rugam sa introduci alta valoare!\n";
+						cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
 					else
 						break;
 				}
 
 				nrProdus--;
+
+				// cod
+
+				cout << "\nProdusul a fost adaugat cu succes!\n";
+
+				cout << "\n0. Inapoi\n";
+				int back;
+				while (cin >> back) {
+					if (back != 0)
+						cout << "Daca nu introduci valoarea 0 nu te vei mai putea intoarce niciodata! * ^ *\n";
+					else
+						break;
+				}
 			}
 			else if (optiune == 3) {
 				//3. Scoate produse din cos
 				// cand se sterge un produs in cos se mareste cantitatea disp in magazin
-				system("CLS");
-				cout << "\nCe produs vrei sa scoti din cos?\n";
+				interfataClient->afiseazaMeniuSterge();
 				client.afisareCos();
 				int nrProdus;
 				while (cin >> nrProdus) {
@@ -89,25 +112,42 @@ int main() {
 				nrProdus--;
 				// supraincarca [] pentru stergere
 				//client[nrProdus]
+
+				cout << "\nProdusul a fost scos din cos cu succes!\n";
+
+				cout << "\n0. Inapoi\n";
+				int back;
+				while (cin >> back) {
+					if (back != 0)
+						cout << "Daca nu introduci valoarea 0 nu te vei mai putea intoarce niciodata! * ^ *\n";
+					else
+						break;
+				}
 			}
 			else if (optiune == 4) {
 				//4. Modifica datele personale
-				system("CLS");
-				cout << "Modifica datele personale:\n";
+				interfataClient->afiseazaMeniuEditare();
 				cin >> client;
-				cout << "\nDatele tale au fost modificate astfel:\n";
-				cout << client;
+
+				cout << "\Datale tale au fost modificate cu succes!\n";
+
+				cout << "\n0. Inapoi\n";
+				int back;
+				while (cin >> back) {
+					if (back != 0)
+						cout << "Daca nu introduci valoarea 0 nu te vei mai putea intoarce niciodata! * ^ *\n";
+					else
+						break;
+				}
 			}
 			else if (optiune == 5) {
 				//5. Trimite comanda
 				// se instantiaza clasa comanda si se adauga cosul, cantitatile, nr de produse si datele clientului
 				// se scrie intr-un fisier comanda
-				system("CLS");
 			}
 			else if (optiune == 6) {
 				//6. Vizualizeaza raportul ultimei comenzi trimise
 				// se citeste din fisier comanda trimisa
-				system("CLS");
 			}
 			else if (optiune == 0) {
 				break;
@@ -116,13 +156,9 @@ int main() {
 
 	}
 	else {
-		system("CLS");
-		cout << "Bine ai venit in magazinul " << magazin.getNume() << "\n";
-
 		while (1) {
 			int optiune;
-			cout << "\nCe doresti sa faci in magazinul nostru azi?\n";
-			magazin.afiseazaMeniu();
+			interfataMagazin->afiseazaMeniu();
 			while (cin >> optiune) {
 				if (optiune != 1 && optiune != 2 && optiune != 3 && optiune != 4 && optiune != 5 && optiune != 0)
 					cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
@@ -137,9 +173,7 @@ int main() {
 					//1. Adauga produse in magazin
 					Produs* produs;
 					int optiuneAdauga;
-					system("CLS");
-					cout << "\nCe produs doresti sa adaugi?\n";
-					magazin.afiseazaMeniuAdauga();
+					interfataMagazin->afiseazaMeniuAdauga();
 					while (cin >> optiuneAdauga) {
 						if (optiune != 1 && optiune != 2 && optiune != 3 && optiune != 0)
 							cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
@@ -171,13 +205,13 @@ int main() {
 			else if (optiune == 2) {
 				//2. Editare Produse magazin
 				//operator []
-				system("CLS");
+				interfataMagazin->afiseazaMeniuEditare();
 				magazin.vizualizareProduse();
-				cout << "\nIntrodu numarul produsului pe care doresti sa-l editezi:\n";
+				cout << "\nIntrodu numarul produsului pe care doresti sa-l editezi: ";
 				int nrProdus;
 				while (cin >> nrProdus) {
-					if (nrProdus < 1 && nrProdus > magazin.getNrProduse())
-						cout << "Valoarea introdusa nu face parte din lista!";
+					if (nrProdus < 1 || nrProdus > magazin.getNrProduse())
+						cout << "Valoarea introdusa nu face parte din lista!\n";
 					else
 						break;
 				}
@@ -189,13 +223,13 @@ int main() {
 			}
 			else if (optiune == 3) {
 				//3. Sterge produse magazin
-				system("CLS");
+				interfataMagazin->afiseazaMeniuSterge();
 				magazin.vizualizareProduse();
-				cout << "\nIntrodu numarul produsului pe care doresti sa-l stergi:\n";
+				cout << "\nIntrodu numarul produsului pe care doresti sa-l stergi: ";
 				int nrProdus;
 				while (cin >> nrProdus) {
-					if (nrProdus < 1 && nrProdus > magazin.getNrProduse())
-						cout << "Valoarea introdusa nu face parte din lista!";
+					if (nrProdus < 1 || nrProdus > magazin.getNrProduse())
+						cout << "Valoarea introdusa nu face parte din lista!\n";
 					else
 						break;
 				}

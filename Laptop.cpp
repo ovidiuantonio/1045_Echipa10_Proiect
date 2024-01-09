@@ -54,9 +54,9 @@ void Laptop::editareProdus() {
 
 void Laptop::afisareDetalii() {
 	this->Produs::afisareDetalii();
-	cout << "Nivel Baterie:" << nivelBaterie << endl;
-	cout << "Memorie RAM:" << memorieRAM << endl;
-	cout << "Model Procesor:" << modelProcesor << endl;
+	cout << "Nivel Baterie: " << nivelBaterie << endl;
+	cout << "Memorie RAM: " << memorieRAM << endl;
+	cout << "Model Procesor: " << modelProcesor << endl;
 }
 
 void Laptop::serialize(ofstream& fout) const {

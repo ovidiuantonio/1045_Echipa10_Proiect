@@ -74,44 +74,23 @@ int main() {
 				cout << "\nIntrodu o valoare: ";
 				int nrProdus;
 				while (cin >> nrProdus) {
-					if (nrProdus < 1 && nrProdus > magazin.getNrProduse())
+					if (nrProdus < 1 || nrProdus > magazin.getNrProduse())
 						cout << "Optiune invalida! Te rugam sa introduci alta valoare!\n";
 					else
 						break;
 				}
 
-				nrProdus--;
-				Produs* produs = nullptr;
+				int cantitate;
+				cout << "Introdu cantitatea dorita: ";
+				cin >> cantitate;
 
-				if (nrProdus == -1) {
-					break;
-				}
-				else if (nrProdus >= 0 && nrProdus < magazin.getNrProduse()) {
-					switch (nrProdus) {
-					case 0:
-						produs = new Subler;
-						break;
-					case 1:
-						produs = new MasinaDeTunsIarba;
-						break;
-					case 2:
-						produs = new Bormasina;
-						break;
-					case 3:
-						produs = new Laptop;
-						break;
-					case 4:
-						produs = new CombinaFrigorifica;
-						break;
-					}
-					client.adaugaProdusInCos(produs);
-					magazin -= nrProdus;
-					cout << "\nProdusul a fost adaugat in cos cu succes!\n";
+				if (cantitate <= 0) {
+					cout << "Cantitatea trebuie sa fie mai mare decat zero.\n";
 				}
 				else {
-					cout << "Optiune invalida!\n";
+					client.adaugaProdusInCos(magazin[nrProdus - 1], cantitate);
+					cout << "\nProdusul a fost adaugat in cos cu succes!\n";
 				}
-
 				cout << "\n0. Inapoi\n";
 
 				int back;

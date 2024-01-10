@@ -32,6 +32,7 @@ public:
 	void afiseazaMeniuSterge();
 	void afiseazaMeniuEditare();
 	void afiseazaMeniuProduseMagazin();
+	void adaugaProdusInCos(Produs* produs);
 
 	string getNume();
 	int getNrProduseCos();

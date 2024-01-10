@@ -81,12 +81,39 @@ int main() {
 				}
 
 				nrProdus--;
+				Produs* produs = nullptr;
 
-				// cod
-
-				cout << "\nProdusul a fost adaugat cu succes!\n";
+				if (nrProdus == -1) {
+					break;
+				}
+				else if (nrProdus >= 0 && nrProdus < magazin.getNrProduse()) {
+					switch (nrProdus) {
+					case 0:
+						produs = new Subler;
+						break;
+					case 1:
+						produs = new MasinaDeTunsIarba;
+						break;
+					case 2:
+						produs = new Bormasina;
+						break;
+					case 3:
+						produs = new Laptop;
+						break;
+					case 4:
+						produs = new CombinaFrigorifica;
+						break;
+					}
+					client.adaugaProdusInCos(produs);
+					magazin -= nrProdus;
+					cout << "\nProdusul a fost adaugat in cos cu succes!\n";
+				}
+				else {
+					cout << "Optiune invalida!\n";
+				}
 
 				cout << "\n0. Inapoi\n";
+
 				int back;
 				while (cin >> back) {
 					if (back != 0)

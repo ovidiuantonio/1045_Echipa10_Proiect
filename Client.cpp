@@ -86,6 +86,18 @@ void Client::afisareCos()
     }
 }
 
+void Client::adaugaProdusInCos(Produs* produs) {
+    cantitati.push_back(1);
+    Produs** aux = new Produs * [nrProduseCos + 1];
+    for (int i = 0; i < nrProduseCos; i++) {
+        aux[i] = produseCosClient[i];
+    }
+    aux[nrProduseCos] = produs;
+    nrProduseCos++;
+    delete[] produseCosClient;
+    produseCosClient = aux;
+}
+
 istream& operator>>(istream& cin, Client& client) {
     cout << "Nume: ";
     cin >> client.nume;

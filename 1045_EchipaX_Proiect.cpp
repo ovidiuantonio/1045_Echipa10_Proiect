@@ -6,6 +6,7 @@
 #include "MasinaDeTunsIarba.h"
 #include "Bormasina.h"
 #include "Laptop.h"
+#include "CombinaFrigorifica.h"
 
 using namespace std;
 

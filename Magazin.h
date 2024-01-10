@@ -4,6 +4,7 @@
 #include "Bormasina.h"
 #include "MasinaDeTunsIarba.h"
 #include "Laptop.h"
+#include "CombinaFrigorifica.h"
 #include <iostream>
 #include <fstream>
 

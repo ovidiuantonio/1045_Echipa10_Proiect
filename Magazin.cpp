@@ -62,6 +62,8 @@ void Magazin::writeFileProduseMagazin() {
 			tip = 3;
 		else if (numeProdus == "Laptop")
 			tip = 4;
+		else if (numeProdus == "CombinaFrigorifica")
+			tip = 5;
 
 		//scriu tipul de produs
 		fout.write((char*)&tip, sizeof(tip));
@@ -97,6 +99,8 @@ void Magazin::readFileProduseMagazin() {
 			produs = new Bormasina;
 		else if (tip == 4)
 			produs = new Laptop;
+		else if (tip == 5)
+			produs = new CombinaFrigorifica;
 
 		//citesc produsul
 		produs->deserialize(fin);

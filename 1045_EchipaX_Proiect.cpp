@@ -192,6 +192,9 @@ int main() {
 					else if (optiuneAdauga == 4) {
 						produs = new Laptop;
 					}
+					else if (optiuneAdauga == 5) {
+						produs = new CombinaFrigorifica;
+					}
 					else {
 						break;
 					}

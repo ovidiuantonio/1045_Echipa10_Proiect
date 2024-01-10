@@ -46,6 +46,11 @@ string CombinaFrigorifica::getCuloare()
     return culoare;
 }
 
+string CombinaFrigorifica::getNume()
+{
+    return nume;
+}
+
 void CombinaFrigorifica::afisareDetalii()
 {
     cout << "Combina frigorifica " << nume << " are capacitatea de congelare de " << capacitateCongelare << " kg/24h, o greutate de " << greutate << " kg si culoarea " << culoare << ". Are pretul de " << pret << " lei si are un rating de " << rating << "/5 stele. Cantitatea disponibila este de " << cantitate << " bucati!\n"
@@ -82,7 +87,7 @@ void CombinaFrigorifica::deserialize(ifstream& fin)
 
     int culoareSize;
     fin.read((char*)&culoareSize, sizeof(culoareSize));
-    char buffer[200];
+    char buffer[100];
     fin.read(buffer, culoareSize);
     buffer[culoareSize] = '\0';
     culoare = buffer;

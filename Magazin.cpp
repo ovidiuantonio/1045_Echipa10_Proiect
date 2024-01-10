@@ -62,7 +62,7 @@ void Magazin::writeFileProduseMagazin() {
 			tip = 3;
 		else if (numeProdus == "Laptop")
 			tip = 4;
-		else if (numeProdus == "CombinaFrigorifica")
+		else if (numeProdus == "Combina Frigorifica")
 			tip = 5;
 
 		//scriu tipul de produs
@@ -168,7 +168,7 @@ void Magazin::afiseazaMeniuAdauga()
 {
 	system("CLS");
 	cout << "--=== Adauga un produs ===--\n\n";
-	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n3. Adauga o bormasina\n4. Adauga un laptop\n\n\n0. Inapoi\n";
+	cout << "1. Adauga un subler\n2. Adauga o masina de tuns iarba\n3. Adauga o bormasina\n4. Adauga un laptop\n5. Adauga o combina frigorifica\n\n\n0. Inapoi\n";
 }
 
 void Magazin::afiseazaMeniuEditare()

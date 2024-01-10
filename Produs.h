@@ -28,7 +28,7 @@ public:
 	void setNume(string nume);
 
 	//de implementat pentru fiecare produs
-	string getNume();
+	virtual string getNume();
 
 	void setMarca(string marca);
 	string getMarca();

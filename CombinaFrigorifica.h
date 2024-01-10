@@ -24,6 +24,8 @@ public:
     void setCuloare(string culoare);
     string getCuloare();
 
+    string getNume();
+
     void afisareDetalii();
     void editareProdus();
 

@@ -9,19 +9,19 @@ Cerințe:
 - introducerea a două tipuri de utilizatori: magazin și client (Ovidiu)
 
 - cerințe specifice magazinului:
--- adăugarea de produse **(Ovidiu)**
--- editarea de produse **(Vanessa)**
--- ștergerea de produse **(Vanessa)**
--- prelucrarea comenzilor **(Max)**
--- realizarea unui raport (într-un fișier text) cu privire la comenzile primite **(Andri)**
+  - adăugarea de produse **(Ovidiu)**
+  - editarea de produse **(Vanessa)**
+  - ștergerea de produse **(Vanessa)**
+  - prelucrarea comenzilor **(Max)**
+  - realizarea unui raport (într-un fișier text) cu privire la comenzile primite **(Andri)**
 
 - cerințe specifice clientului:
--- vizualizarea produselor din magazin **(Ovidiu)**
--- selectarea produselor dorite și introducerea acestora într-un coș electronic **(Mario)**
--- scoaterea de produse din coșul electronic **(Mario)**
--- completarea datelor personale ale clientului **(Ovidiu)**
--- trimiterea comenzii cu produsele din coșul electronic. Se vor furniza și datele clientului (de ex. nume, adresa, etc.) **(Andri)**
--- realizarea unui raport (într-un fișier text) cu privire la comanda trimisă **(Andri)**
+  - vizualizarea produselor din magazin **(Ovidiu)**
+  - selectarea produselor dorite și introducerea acestora într-un coș electronic **(Mario)**
+  - scoaterea de produse din coșul electronic **(Mario)**
+  - completarea datelor personale ale clientului **(Ovidiu)**
+  - trimiterea comenzii cu produsele din coșul electronic. Se vor furniza și datele clientului (de ex. nume, adresa, etc.) **(Andri)**
+  - realizarea unui raport (într-un fișier text) cu privire la comanda trimisă **(Andri)**
 
 - toate funcționalitățile vor fi puse la dispoziție prin intermediul unei interfețe de tip meniu realizat în consolă **(Ovidiu)**
 - la deschiderea aplicației se va interoga tipul de utilizator cu care se intră și în funcție de utilizatorul ales (magazin sau client) se va pune la dispoziție meniul specific **(Ovidiu)**

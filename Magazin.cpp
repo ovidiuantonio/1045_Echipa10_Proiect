@@ -179,6 +179,12 @@ void Magazin::afiseazaMeniuSterge()
 	cout << "--=== Sterge un produs ===--\n\n";
 }
 
+void Magazin::afiseazaMeniuProduseMagazin()
+{
+	system("CLS");
+	cout << "--=== Acestea sunt produsele disponibile in magazin ===--\n\n";
+}
+
 void Magazin::operator-=(int i) {
 	if (i < nrProduseMagazin)
 	{

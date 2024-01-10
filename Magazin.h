@@ -36,6 +36,7 @@ public:
 	void afiseazaMeniuAdauga();
 	void afiseazaMeniuEditare();
 	void afiseazaMeniuSterge();
+	void afiseazaMeniuProduseMagazin();
 
 	void vizualizareProduse();
 	void editareProdusMagazin(Produs* produs);

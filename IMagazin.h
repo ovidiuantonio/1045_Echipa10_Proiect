@@ -6,5 +6,6 @@ public:
 	virtual void afiseazaMeniuAdauga() = 0;
 	virtual void afiseazaMeniuEditare() = 0;
 	virtual void afiseazaMeniuSterge() = 0;
+	virtual void afiseazaMeniuProduseMagazin() = 0;
 };
 

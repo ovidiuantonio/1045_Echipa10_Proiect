@@ -42,9 +42,6 @@
     <ClInclude Include="IMagazin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IClient.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1045_EchipaX_Proiect.cpp">
@@ -72,9 +69,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IMagazin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

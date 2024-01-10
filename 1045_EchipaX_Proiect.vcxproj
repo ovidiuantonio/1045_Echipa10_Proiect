@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClInclude Include="Bormasina.h" />
     <ClInclude Include="Client.h" />
-    <ClInclude Include="IClient.h" />
     <ClInclude Include="IMagazin.h" />
     <ClInclude Include="Laptop.h" />
     <ClInclude Include="Magazin.h" />
@@ -142,7 +141,6 @@
     <ClCompile Include="1045_EchipaX_Proiect.cpp" />
     <ClCompile Include="Bormasina.cpp" />
     <ClCompile Include="Client.cpp" />
-    <ClCompile Include="IClient.cpp" />
     <ClCompile Include="IMagazin.cpp" />
     <ClCompile Include="Laptop.cpp" />
     <ClCompile Include="Magazin.cpp" />

@@ -1,6 +1,4 @@
 ﻿#include <iostream>
-#include <cstring>
-#include <stdlib.h>
 #include "Produs.h"
 #include "Client.h"
 #include "Magazin.h"
@@ -14,13 +12,13 @@ using namespace std;
 int main() {
 	string tipUser;
 
-	Magazin magazin("VOMMA", 0, nullptr);
+	Magazin magazin("MAMOV", 0, nullptr);
 	magazin.readFileProduseMagazin();
 
 	IMagazin* interfataMagazin = &magazin;
 	
 	Client client("Ovidiu", "0752925119", 18, 0, nullptr, nullptr);
-	IClient* interfataClient = &client;
+	IMagazin* interfataClient = &client;
 
 	// primim tipul de utilizator si nu permitem introducerea altor valori in afar de C si A
 	system("CLS");

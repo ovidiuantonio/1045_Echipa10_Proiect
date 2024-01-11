@@ -83,7 +83,7 @@ void Bormasina::deserialize(ifstream& fin) {
 
     int tipSize;
     fin.read((char*)&tipSize, sizeof(tipSize));
-    char buffer[100]; 
+    char buffer[200]; 
     fin.read(buffer, tipSize);
     buffer[tipSize] = '\0';
     tipAlimentare = buffer;

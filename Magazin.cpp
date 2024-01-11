@@ -153,7 +153,7 @@ void Magazin::editareProdusMagazin(Produs* produs) {
 
 void Magazin::vizualizareProduse() {
 	for (int i = 0; i < nrProduseMagazin; i++) {
-		cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << "\n";
+		cout << i + 1 << ". " << produseMagazin[i]->getNume() << " " << produseMagazin[i]->getMarca() << " x " << produseMagazin[i]->getCantitate() << " buc.\n";
 	}
 }
 
@@ -187,6 +187,12 @@ void Magazin::afiseazaMeniuProduseMagazin()
 {
 	system("CLS");
 	cout << "--=== Acestea sunt produsele disponibile in magazin ===--\n\n";
+}
+
+void Magazin::afiseazaMeniuUltimaComanda()
+{
+	system("CLS");
+	cout << "--=== Raportul ultimei comenzi trimise ===--\n\n";
 }
 
 void Magazin::operator-=(int i) {
@@ -226,4 +232,19 @@ void Magazin::operator+=(Produs* p) {
 
 Produs* Magazin::operator[](int index) {
 	return produseMagazin[index];
+}
+
+Produs* Magazin::getProdusById(int idProdus) {
+	for (int i = 0; i < nrProduseMagazin; i++)
+		if (produseMagazin[i]->getId() == idProdus)
+			return produseMagazin[i];
+}
+
+void Magazin::scadeCantitateById(int id, int cantitate) {
+	for (int i = 0; i < nrProduseMagazin; i++) {
+		if (produseMagazin[i]->getId() == id)
+			produseMagazin[i]->setCantitate(produseMagazin[i]->getCantitate() - cantitate);
+	}
+
+	Magazin::writeFileProduseMagazin();
 }

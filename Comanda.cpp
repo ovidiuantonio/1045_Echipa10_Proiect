@@ -2,7 +2,7 @@
 
 Comanda::Comanda()
 {
-	comanda_id = "0";
+	comanda_id = to_string(rand());
 	cantitati.resize(0);
 	nrProduseComanda = 0;
 	produseComandaClient = nullptr;
@@ -11,15 +11,15 @@ Comanda::Comanda()
 	telefon_client = "0752925119";
 }
 
-Comanda::Comanda(string comanda_id, string nume_client, string telefon_client, int nrProduseComanda, int* cantitati, Produs** produseComandaClient)
+Comanda::Comanda(string comanda_id, string nume_client, string telefon_client, int nrProduseComanda, vector<int> cantitati, Produs** produseComandaClient)
 {
 	this->comanda_id = comanda_id;
     valoarea_totala = 0;
 	this->nume_client = nume_client;
 	this->telefon_client = telefon_client;
+	this->nrProduseComanda = nrProduseComanda;
     if (nrProduseComanda != 0) {
         this->cantitati.clear();
-        this->cantitati.resize(nrProduseComanda);
         this->produseComandaClient = new Produs * [nrProduseComanda];
         for (int i = 0; i < nrProduseComanda; i++) {
             this->cantitati.push_back(cantitati[i]);
@@ -36,8 +36,27 @@ Comanda::Comanda(string comanda_id, string nume_client, string telefon_client, i
 
 Comanda::~Comanda()
 {
-    delete[] produseComandaClient;
     cantitati.clear();
+}
+
+int Comanda::getNrProduseComanda()
+{
+	return nrProduseComanda;
+}
+
+Produs** Comanda::getProduseComandaClient()
+{
+	return produseComandaClient;
+}
+
+string Comanda::getId()
+{
+	return comanda_id;
+}
+
+vector<int> Comanda::getCantitati()
+{
+	return cantitati;
 }
 
 void Comanda::serialize(ofstream& fout) const
@@ -45,10 +64,9 @@ void Comanda::serialize(ofstream& fout) const
 	//asa scriu elementele de tip int, float etc, elem numerice
 	fout.write((char*)&nrProduseComanda, sizeof(nrProduseComanda));
 	fout.write((char*)&valoarea_totala, sizeof(valoarea_totala));
-	for (int i=0;i<nrProduseComanda;i++)
-	fout.write((char*)&cantitati[i], sizeof(cantitati[i]));
+	for (int i = 0; i < nrProduseComanda; i++)
+		fout.write((char*)&cantitati[i], sizeof(cantitati[i]));
 	
-
 	// asa scriu elementele de tip string
 	//le scriu marimea
 	int comanda_idSize = comanda_id.size();
@@ -66,7 +84,6 @@ void Comanda::serialize(ofstream& fout) const
 
 void Comanda::deserialize(ifstream& fin)
 {
-	
 	fin.read((char*)&nrProduseComanda, sizeof(nrProduseComanda));
 	fin.read((char*)&valoarea_totala, sizeof(valoarea_totala));
 	cantitati.resize(nrProduseComanda);
@@ -82,14 +99,12 @@ void Comanda::deserialize(ifstream& fin)
 
 	int nume_clientSize;
 	fin.read((char*)&nume_clientSize, sizeof(nume_clientSize));
-	buffer[100];
 	fin.read(buffer, nume_clientSize);
 	buffer[nume_clientSize] = '\0';
 	nume_client = buffer;
 
 	int telefon_clientSize;
 	fin.read((char*)&telefon_clientSize, sizeof(telefon_clientSize));
-	buffer[100];
 	fin.read(buffer, telefon_clientSize);
 	buffer[telefon_clientSize] = '\0';
 	telefon_client = buffer;
@@ -97,7 +112,8 @@ void Comanda::deserialize(ifstream& fin)
 
 void Comanda::writeFileComanda()
 {
-	ofstream fout("Comenzi.dat", ios::out | ios::trunc);
+	ofstream fout;
+	fout.open("Comenzi.dat", ios::out | ios::app);
 	this->serialize(fout);
 	for (int i = 0; i < this->nrProduseComanda; i++) 
 	{
@@ -122,15 +138,9 @@ void Comanda::writeFileComanda()
 	fout.close();
 }
 
-void Comanda::readFileComanda()
+void Comanda::readFileComanda(ifstream& fin)
 {
-	ifstream fin("Comenzi.dat", ios::in);
-
 	this->deserialize(fin);
-	if (nrProduseComanda < 0) {
-		nrProduseComanda = 0;
-		produseComandaClient = nullptr;
-	}
 
 	Produs** aux = new Produs * [nrProduseComanda];
 
@@ -156,5 +166,25 @@ void Comanda::readFileComanda()
 	}
 
 	produseComandaClient = aux;
-	fin.close();
+}
+
+void Comanda::adaugaProdus(Produs* produs) {
+	Produs** aux = new Produs * [nrProduseComanda + 1];
+	for (int i = 0; i < nrProduseComanda; i++) {
+		aux[i] = produseComandaClient[i];
+	}
+	aux[nrProduseComanda] = produs;
+	nrProduseComanda++;
+	delete[] produseComandaClient;
+	produseComandaClient = aux;
+}
+
+ostream& operator<<(ostream& cout, const Comanda& comanda)
+{
+	cout << "Comanda cu id-ul " << comanda.comanda_id << ", in valoare de " << comanda.valoarea_totala << " lei, contine urmatoarele produse:\n";
+	for (int i = 0; i < comanda.nrProduseComanda; i++) {
+		cout << i + 1 << ". " << comanda.produseComandaClient[i]->getNume() << " " << comanda.produseComandaClient[i]->getMarca() << " x " << comanda.cantitati[i] << " buc.\n";
+	}
+
+	return cout;
 }

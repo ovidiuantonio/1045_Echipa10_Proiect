@@ -26,11 +26,14 @@ public:
 	string getNume();
 	int getNrProduse();
 
+	Produs* getProdusById(int idProdus);
+
 	void setNume(string nume);
 
 	void writeFileProduseMagazin();
 	void readFileProduseMagazin();
 	void adaugaProdusMagazin(Produs* produs);
+	void scadeCantitateById(int id, int cantitate);
 
 	//metode interfata
 	void afiseazaMeniu();
@@ -38,6 +41,7 @@ public:
 	void afiseazaMeniuEditare();
 	void afiseazaMeniuSterge();
 	void afiseazaMeniuProduseMagazin();
+	void afiseazaMeniuUltimaComanda();
 
 	void vizualizareProduse();
 	void editareProdusMagazin(Produs* produs);

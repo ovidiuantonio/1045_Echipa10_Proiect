@@ -38,6 +38,8 @@ public:
 	void setDescriere(string descriere);
 	string getDescriere();
 
+	int getId();
+
 	//constructori
 	Produs();
 	Produs(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere);

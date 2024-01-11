@@ -44,12 +44,13 @@ void Laptop::setModelProcesor(string modelProcesor) {
 
 void Laptop::editareProdus() {
 	this->Produs::editareProdus();
-	cout << "Nivel Baterie:";
+	cout << "Nivel Baterie: ";
 	cin >> nivelBaterie;
-	cout << "Memorie RAM:";
+	cout << "Memorie RAM: ";
 	cin >> memorieRAM;
-	cout << "Model Procesor:";
-	cin >> modelProcesor;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cout << "Model Procesor: ";
+	getline(cin, modelProcesor);
 }
 
 void Laptop::afisareDetalii() {
@@ -76,7 +77,7 @@ void Laptop::deserialize(ifstream& fin)
 
 	int Size;
 	fin.read((char*)&Size, sizeof(Size));
-	char buffer[100];
+	char buffer[200];
 	fin.read(buffer, Size);
 	buffer[Size] = '\0';
 	modelProcesor = buffer;

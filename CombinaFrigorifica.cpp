@@ -87,7 +87,7 @@ void CombinaFrigorifica::deserialize(ifstream& fin)
 
     int culoareSize;
     fin.read((char*)&culoareSize, sizeof(culoareSize));
-    char buffer[100];
+    char buffer[200];
     fin.read(buffer, culoareSize);
     buffer[culoareSize] = '\0';
     culoare = buffer;

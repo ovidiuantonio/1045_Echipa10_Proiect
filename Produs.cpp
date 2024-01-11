@@ -63,6 +63,11 @@ string Produs::getDescriere()
 	return descriere;
 }
 
+int Produs::getId()
+{
+	return idProdus;
+}
+
 Produs::Produs()
 {
 	cantitate = 0;
@@ -108,6 +113,7 @@ void Produs::editareProdus() {
 
 void Produs::serialize(ofstream& fout) const {
 	//asa scriu elementele de tip int, float etc, elem numerice
+	fout.write((char*)&idProdus, sizeof(idProdus));
 	fout.write((char*)&cantitate, sizeof(cantitate));
 	fout.write((char*)&pret, sizeof(pret));
 	fout.write((char*)&rating, sizeof(rating));
@@ -130,6 +136,7 @@ void Produs::serialize(ofstream& fout) const {
 
 void Produs::deserialize(ifstream& fin) {
 	//asa citesc elem numerice
+	fin.read((char*)&idProdus, sizeof(idProdus));
 	fin.read((char*)&cantitate, sizeof(cantitate));
 	fin.read((char*)&pret, sizeof(pret));
 	fin.read((char*)&rating, sizeof(rating));
@@ -137,7 +144,7 @@ void Produs::deserialize(ifstream& fin) {
 	// asa citesc elem de tip string
 	int numeSize;
 	fin.read((char*)&numeSize, sizeof(numeSize));
-	char buffer[100];  
+	char buffer[200];  
 	fin.read(buffer, numeSize);
 	buffer[numeSize] = '\0';
 	nume = buffer;

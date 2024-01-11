@@ -7,6 +7,9 @@
 #include "CombinaFrigorifica.h"
 #include <iostream>
 #include <vector> 
+#include <cstdlib>
+#include <string>
+
 class Comanda
 {
 private:
@@ -20,14 +23,23 @@ private:
 public:
 	Comanda();
 	Comanda(string comanda_id, string nume_client, string telefon_client,
-		int nrProduseComanda, int* cantitati, Produs** produseCosClient);
+		int nrProduseComanda, vector<int> cantitati, Produs** produseCosClient);
 	~Comanda();
-	virtual void serialize(ofstream& fout) const;
 
+	int getNrProduseComanda();
+	Produs** getProduseComandaClient();
+	string getId();
+	vector<int> getCantitati();
+
+	void adaugaProdus(Produs* produs);
+
+	virtual void serialize(ofstream& fout) const;
 	virtual void deserialize(ifstream& fin);
 
 	void writeFileComanda();
-	void readFileComanda();
+	void readFileComanda(ifstream& fin);
+
+	friend ostream& operator<<(ostream& cout, const Comanda& comanda);
 };
 
 

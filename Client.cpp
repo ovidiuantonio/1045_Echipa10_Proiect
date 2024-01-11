@@ -47,6 +47,94 @@ int Client::getNrProduseCos()
     return nrProduseCos;
 }
 
+Produs** Client::getProduseCosClient()
+{
+    return produseCosClient;
+}
+
+vector<int> Client::getCantitati()
+{
+    return cantitati;
+
+}
+
+void Client::salveazaCos()
+{
+    ofstream fout("ProduseCos.dat", ios::out | ios::trunc);
+
+    //scriu nr de produse
+    fout.write((char*)&nrProduseCos, sizeof(nrProduseCos));
+    for (int i = 0; i < nrProduseCos; i++) {
+        fout.write((char*)&cantitati[i], sizeof(cantitati[i]));
+        int tip;
+        string numeProdus = produseCosClient[i]->getNume();
+        if (numeProdus == "Subler")
+            tip = 1;
+        else if (numeProdus == "Masina de tuns iarba")
+            tip = 2;
+        else if (numeProdus == "Bormasina")
+            tip = 3;
+        else if (numeProdus == "Laptop")
+            tip = 4;
+        else if (numeProdus == "Combina Frigorifica")
+            tip = 5;
+
+        //scriu tipul de produs
+        fout.write((char*)&tip, sizeof(tip));
+        //scriu produsul
+        produseCosClient[i]->serialize(fout);
+    }
+    fout.close();
+}
+
+void Client::recupereazaCos()
+{
+    ifstream fin("ProduseCos.dat", ios::in);
+    
+    fin.read((char*)&nrProduseCos, sizeof(nrProduseCos));
+    cantitati.resize(nrProduseCos);
+
+    Produs** aux = new Produs * [nrProduseCos];
+
+    for (int i = 0; i < nrProduseCos; i++) {
+        fin.read((char*)&cantitati[i], sizeof(cantitati[i]));
+        int tip;
+        fin.read((char*)&tip, sizeof(tip));
+        Produs* produs = nullptr;
+        if (tip == 1)
+            produs = new Subler;
+        else if (tip == 2)
+            produs = new MasinaDeTunsIarba;
+        else if (tip == 3)
+            produs = new Bormasina;
+        else if (tip == 4)
+            produs = new Laptop;
+        else if (tip == 5)
+            produs = new CombinaFrigorifica;
+
+        //citesc produsul
+        produs->deserialize(fin);
+        aux[i] = produs;
+    }
+
+    produseCosClient = aux;
+    fin.close();
+}
+
+void Client::resetCos()
+{
+    nrProduseCos = 0;
+    produseCosClient = nullptr;
+    cantitati.clear();
+
+    Client::salveazaCos();
+}
+
+string Client::getTelefon()
+{
+    return telefon;
+}
+
 void Client::afiseazaMeniu()
 {
     system("CLS");
@@ -78,6 +166,12 @@ void Client::afiseazaMeniuProduseMagazin()
     cout << "--=== Acestea sunt produsele disponibile in magazin ===--\n\n";
 }
 
+void Client::afiseazaMeniuUltimaComanda()
+{
+    system("CLS");
+    cout << "--=== Raportul ultimei comenzi trimise ===--\n\n";
+}
+
 void Client::afisareCos()
 {
     cout << "Cosul lui " << nume << " este:\n";
@@ -96,6 +190,26 @@ void Client::adaugaProdusInCos(Produs* produs, int cantitate) {
     nrProduseCos++;
     delete[] produseCosClient;
     produseCosClient = aux;
+
+    Client::salveazaCos();
+}
+
+void Client::scoateProdusDinCos(int nrProdus)
+{
+    nrProduseCos = nrProduseCos - 1;
+    Produs** aux = new Produs * [nrProduseCos];
+    for (int j = 0; j < nrProdus; j++)
+        aux[j] = produseCosClient[j];
+
+    produseCosClient[nrProdus] = nullptr;
+
+    for (int j = nrProdus; j < nrProduseCos; j++)
+        aux[j] = produseCosClient[j + 1];
+
+    delete[] produseCosClient;
+    produseCosClient = aux;
+
+    Client::salveazaCos();
 }
 
 istream& operator>>(istream& cin, Client& client) {

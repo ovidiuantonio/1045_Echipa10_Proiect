@@ -1,6 +1,10 @@
 #pragma once
 #include "Produs.h"
-#include "Magazin.h"
+#include "Subler.h"
+#include "Bormasina.h"
+#include "MasinaDeTunsIarba.h"
+#include "Laptop.h"
+#include "CombinaFrigorifica.h"
 #include <iostream>
 #include <vector> 
 
@@ -33,9 +37,18 @@ public:
 	void afiseazaMeniuEditare();
 	void afiseazaMeniuProduseMagazin();
 	void adaugaProdusInCos(Produs* produs, int cantitate);
+	void scoateProdusDinCos(int nrProdus);
+	void afiseazaMeniuUltimaComanda();
 
 	string getNume();
+	string getTelefon();
 	int getNrProduseCos();
+	Produs** getProduseCosClient();
+	vector<int> getCantitati();
+
+	void salveazaCos();
+	void recupereazaCos();
+	void resetCos();
 
 	friend istream& operator>>(istream& cin, Client& client);
 	friend ostream& operator<<(ostream& cout, const Client& client);

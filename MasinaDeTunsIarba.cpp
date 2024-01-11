@@ -88,7 +88,7 @@ void MasinaDeTunsIarba::afisareDetalii()
 
 	  int serieSize;
 	  fin.read((char*)&serieSize, sizeof(serieSize));
-	  char buffer[100];
+	  char buffer[200];
 	  fin.read(buffer, serieSize);
 	  buffer[serieSize] = '\0';
 	  serie = buffer;

@@ -64,7 +64,12 @@ void Subler::editareProdus() {
 	cout << "Culoare: ";
 	getline(cin, culoare);
 	cout << "Distanta maxima: ";
-	cin >> distantaMaxima;
+	while (cin >> distantaMaxima) {
+		if (distantaMaxima <= 0)
+			cout << "Valoare invalida! Introdu alta valoare: ";
+		else
+			break;
+	}
 }
 
 void Subler::serialize(ofstream& fout) const {

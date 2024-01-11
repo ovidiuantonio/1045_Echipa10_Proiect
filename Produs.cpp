@@ -81,7 +81,7 @@ Produs::Produs()
 Produs::Produs(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere)
 {
 	this->idProdus = idProdus;
-	if(cantitate >= 0)
+	if(cantitate > 0)
 		this->cantitate = cantitate;
 	if (pret > 0)
 		this->pret = pret;
@@ -99,11 +99,26 @@ void Produs::afisareDetalii()
 
 void Produs::editareProdus() {
 	cout << "Cantitate: ";
-	cin>> cantitate;
+	while (cin >> cantitate) {
+		if (cantitate <= 0)
+			cout << "Valoare invalida! Introdu alta valoare: ";
+		else
+			break;
+	}
 	cout << "Pret: ";
-	cin>> pret;
+	while (cin >> pret) {
+		if (pret <= 0)
+			cout << "Valoare invalida! Introdu alta valoare: ";
+		else
+			break;
+	}
 	cout << "Rating ( / 5): ";
-	cin>> rating;
+	while (cin >> rating) {
+		if (rating <= 0 || rating > 5)
+			cout << "Valoare invalida! Introdu alta valoare: ";
+		else
+			break;
+	}
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "Marca: ";
 	getline(cin, marca);

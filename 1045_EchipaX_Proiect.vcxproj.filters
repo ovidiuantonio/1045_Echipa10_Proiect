@@ -45,6 +45,9 @@
     <ClInclude Include="CombinaFrigorifica.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Comanda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1045_EchipaX_Proiect.cpp">
@@ -75,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CombinaFrigorifica.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Comenzi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Comanda.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

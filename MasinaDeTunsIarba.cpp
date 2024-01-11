@@ -8,7 +8,7 @@ MasinaDeTunsIarba::MasinaDeTunsIarba()
 	marimeRezervor = 4.2;
 }
 
-MasinaDeTunsIarba::MasinaDeTunsIarba(int cantitate, float pret, float rating, string nume, string marca, string desciere, string serie, string culoare, float marimeRezervor) : Produs(cantitate, pret, rating, nume, marca, desciere)
+MasinaDeTunsIarba::MasinaDeTunsIarba(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere, string serie, string culoare, float marimeRezervor) : Produs(idProdus, cantitate, pret, rating, nume, marca, desciere)
 {
 	this->serie = serie;
 	this->culoare = culoare;

@@ -80,9 +80,6 @@
     <ClCompile Include="CombinaFrigorifica.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Comenzi.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Comanda.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -8,8 +8,8 @@ CombinaFrigorifica::CombinaFrigorifica()
     culoare = "alb";
 }
 
-CombinaFrigorifica::CombinaFrigorifica(int cantitate, float pret, float rating, string nume, string marca, string descriere, int capacitateCongelare, int greutate, string culoare)
-    : Produs(cantitate, pret, rating, nume, marca, descriere)
+CombinaFrigorifica::CombinaFrigorifica(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string descriere, int capacitateCongelare, int greutate, string culoare)
+    : Produs(idProdus, cantitate, pret, rating, nume, marca, descriere)
 {
     this->capacitateCongelare = capacitateCongelare;
     this->greutate = greutate;

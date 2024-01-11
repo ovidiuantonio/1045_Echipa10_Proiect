@@ -8,8 +8,8 @@ Bormasina::Bormasina()
     areBateriaInclusa = 0;
 }
 
-Bormasina::Bormasina(int cantitate, float pret, float rating, string nume, string marca, string descriere, string tipAlimentare, int putere, int areBateriaInclusa)
-    : Produs(cantitate, pret, rating, nume, marca, descriere)
+Bormasina::Bormasina(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string descriere, string tipAlimentare, int putere, int areBateriaInclusa)
+    : Produs(idProdus, cantitate, pret, rating, nume, marca, descriere)
 {
     this->tipAlimentare = tipAlimentare;
     this->putere = putere;

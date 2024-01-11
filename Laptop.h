@@ -9,7 +9,7 @@ private:
 	float memorieRAM;
 public:
 	Laptop();
-	Laptop(int cantitate, float pret, float rating, string nume, string marca, string desciere, int nivelBaterie, string modelProcesor, float memorieRAM);
+	Laptop(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere, int nivelBaterie, string modelProcesor, float memorieRAM);
 
 	string getNume();
 

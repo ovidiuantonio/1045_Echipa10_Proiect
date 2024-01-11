@@ -145,7 +145,6 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Comanda.cpp" />
     <ClCompile Include="CombinaFrigorifica.cpp" />
-    <ClCompile Include="Comenzi.cpp" />
     <ClCompile Include="IMagazin.cpp" />
     <ClCompile Include="Laptop.cpp" />
     <ClCompile Include="Magazin.cpp" />

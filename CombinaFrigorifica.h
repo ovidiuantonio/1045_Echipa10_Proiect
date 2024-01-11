@@ -13,7 +13,7 @@ private:
 
 public:
     CombinaFrigorifica();
-    CombinaFrigorifica(int cantitate, float pret, float rating, string nume, string marca, string descriere, int capacitateCongelare, int greutate, string culoare);
+    CombinaFrigorifica(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string descriere, int capacitateCongelare, int greutate, string culoare);
 
     void setCapacitateCongelare(int capacitateCongelare);
     int getCapacitateCongelare();

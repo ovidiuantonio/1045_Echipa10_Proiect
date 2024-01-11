@@ -2,12 +2,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
 class Produs
 {
 protected:
+	int idProdus;
 	int cantitate;
 	float pret;
 	float rating;
@@ -38,7 +40,7 @@ public:
 
 	//constructori
 	Produs();
-	Produs(int cantitate, float pret, float rating, string nume, string marca, string desciere);
+	Produs(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere);
 
 	// metode virtuale de implementat pentru fiecare produs in parte
 	virtual void afisareDetalii();

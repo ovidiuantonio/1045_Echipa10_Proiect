@@ -12,7 +12,7 @@ class MasinaDeTunsIarba : public Produs
 
 public:
     MasinaDeTunsIarba();
-    MasinaDeTunsIarba(int cantitate, float pret, float rating, string nume, string marca, string desciere, string serie, string culoare, float marimeRezervor);
+    MasinaDeTunsIarba(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere, string serie, string culoare, float marimeRezervor);
 
     void setSerie(string serie);
     string getSerie();

@@ -14,19 +14,28 @@ Comanda::Comanda()
 Comanda::Comanda(string comanda_id, string nume_client, string telefon_client, int nrProduseComanda, int* cantitati, Produs** produseCosClient)
 {
 	this->comanda_id = comanda_id;
+    valoarea_totala = 0;
 	this->nume_client = nume_client;
 	this->telefon_client = telefon_client;
     if (nrProduseComanda != 0) {
         this->cantitati.clear();
-        this->cantitati.resize(nrProduseCos);
-        this->produseCosClient = new Produs * [nrProduseCos];
-        for (int i = 0; i < nrProduseCos; i++) {
+        this->cantitati.resize(nrProduseComanda);
+        this->produseComandaClient = new Produs * [nrProduseComanda];
+        for (int i = 0; i < nrProduseComanda; i++) {
             this->cantitati.push_back(cantitati[i]);
-            this->produseCosClient[i] = produseCosClient[i];
+            this->produseComandaClient[i] = produseComandaClient[i];
+            valoarea_totala += cantitati[i] * produseComandaClient[i]->getPret();
         }
     }
     else {
         this->cantitati.resize(0);
-        this->produseCosClient = nullptr;
+        this->produseComandaClient = nullptr;
     }
+
+}
+
+Comanda::~Comanda()
+{
+    delete[] produseComandaClient;
+    cantitati.clear();
 }

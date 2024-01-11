@@ -70,10 +70,12 @@ Produs::Produs()
 	rating = 1;
 	marca = "Samsung";
 	descriere = "Lorem Ipsum";
+	idProdus = rand();
 }
 
-Produs::Produs(int cantitate, float pret, float rating, string nume, string marca, string desciere)
+Produs::Produs(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere)
 {
+	this->idProdus = idProdus;
 	if(cantitate >= 0)
 		this->cantitate = cantitate;
 	if (pret > 0)
@@ -102,7 +104,6 @@ void Produs::editareProdus() {
 	getline(cin, marca);
 	cout << "Descriere: ";
 	getline(cin, descriere);
-
 }
 
 void Produs::serialize(ofstream& fout) const {

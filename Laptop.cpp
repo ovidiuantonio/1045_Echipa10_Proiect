@@ -8,8 +8,8 @@ Laptop::Laptop() {
 	memorieRAM = 5;
 }
 
-Laptop::Laptop(int cantitate, float pret, float rating, string nume, string marca, string desciere, int nivelBaterie, string modelProcesor, float memorieRAM)
-	:Produs(cantitate, pret, rating, nume, marca, descriere)
+Laptop::Laptop(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere, int nivelBaterie, string modelProcesor, float memorieRAM)
+	:Produs(idProdus, cantitate, pret, rating, nume, marca, descriere)
 {
 	this->nivelBaterie = nivelBaterie;
 	this->memorieRAM = memorieRAM;

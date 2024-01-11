@@ -17,6 +17,7 @@ public:
 	Comanda(string comanda_id, string nume_client, string telefon_client,
 		int nrProduseComanda, int* cantitati, Produs** produseCosClient);
 	~Comanda();
+
 };
 
 

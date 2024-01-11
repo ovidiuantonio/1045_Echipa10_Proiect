@@ -13,7 +13,7 @@ private:
 
 public:
     Bormasina();
-    Bormasina(int cantitate, float pret, float rating, string nume, string marca, string descriere, string tipAlimentare, int putere, int areBateriaInclusa);
+    Bormasina(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string descriere, string tipAlimentare, int putere, int areBateriaInclusa);
 
     string getNume();
     void setTipAlimentare(string tipAlimentare);

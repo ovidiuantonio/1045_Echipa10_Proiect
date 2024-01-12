@@ -13,7 +13,7 @@ Cerințe:
   - editarea de produse **(Vanessa)**
   - ștergerea de produse **(Vanessa)**
   - prelucrarea comenzilor **(Ovidiu si Max)**
-  - realizarea unui raport (într-un fișier text) cu privire la comenzile primite
+  - realizarea unui raport (într-un fișier text) cu privire la comenzile primite **(Ovidiu)**
 
 - cerințe specifice clientului:
   - vizualizarea produselor din magazin **(Ovidiu)**
@@ -28,7 +28,7 @@ Cerințe:
 
 Cerințe tehnice:
 - să se realizeze cel puțin 5 clase **(Toti)**
-- să se realizeze cel puțin o ierarhie de clase care să implementeze principiile moștenirii (cel puțin 3 clase utilizate în această ierarhie pentru a se evidenția beneficiile moștenirii)
+- să se realizeze cel puțin o ierarhie de clase care să implementeze principiile moștenirii (cel puțin 3 clase utilizate în această ierarhie pentru a se evidenția beneficiile moștenirii) **(Toti)**
 - să se realizeze cel puțin o clasă de tip interfață, iar referința la această interfață să fie folosită în program când vor fi referite obiectele copil. Să se folosească polimorfismul. **(Ovidiu)**
 - atributele să fie protejate prin mecanismul de încapsulare, iar accesul la acestea să se facă prin getteri și setteri (metode accesor) **(Toti)**
 - să se realizeze constructori default și cu parametri pentru clasele care conțin entități. Să se facă validarea parametrilor. Să se realizeze destructorul, constructorul de copiere și supraîncărcarea operatorului egal pentru aceste clase. **(Toti)**

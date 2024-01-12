@@ -9,5 +9,8 @@ public:
 	virtual void afiseazaMeniuProduseMagazin() = 0;
 
 	virtual void afiseazaMeniuUltimaComanda() = 0;
+
+	virtual void afiseazaMeniuIstoricComenzi() = 0;
+	virtual void afiseazaMeniuPrelucrareComenzi() = 0;
 };
 

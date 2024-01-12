@@ -172,6 +172,18 @@ void Client::afiseazaMeniuUltimaComanda()
     cout << "--=== Raportul ultimei comenzi trimise ===--\n\n";
 }
 
+void Client::afiseazaMeniuIstoricComenzi()
+{
+    system("CLS");
+    cout << "--=== Istoric Comenzi ===--\n\n";
+}
+
+void Client::afiseazaMeniuPrelucrareComenzi()
+{
+    system("CLS");
+    cout << "--=== Prelucreaza Comenzile ===--\n\n";
+}
+
 void Client::afisareCos()
 {
     cout << "Cosul lui " << nume << " este:\n";

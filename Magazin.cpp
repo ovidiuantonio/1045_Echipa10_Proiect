@@ -161,7 +161,7 @@ void Magazin::afiseazaMeniu()
 {
 	system("CLS");
 	cout << "--=== Bine ai venit in magazinul " << nume << "! Ce doresti sa faci in magazinul nostru azi ? ===--\n\n";
-	cout << "1. Adauga un produs in magazin\n2. Editeaza un produs din magazin\n3. Sterge un produs din magazin\n4. Prelucreaza comenzile\n5. Realizeaza raportul tuturor comenzilor\n\n\n0. Inchide aplicatia\n";
+	cout << "1. Adauga un produs in magazin\n2. Editeaza un produs din magazin\n3. Sterge un produs din magazin\n4. Prelucreaza comenzile\n5. Istoric comenzi\n\n\n0. Inchide aplicatia\n";
 }
 
 void Magazin::afiseazaMeniuAdauga()
@@ -193,6 +193,18 @@ void Magazin::afiseazaMeniuUltimaComanda()
 {
 	system("CLS");
 	cout << "--=== Raportul ultimei comenzi trimise ===--\n\n";
+}
+
+void Magazin::afiseazaMeniuIstoricComenzi()
+{
+	system("CLS");
+	cout << "--=== Istoric Comenzi ===--\n\n";
+}
+
+void Magazin::afiseazaMeniuPrelucrareComenzi()
+{
+	system("CLS");
+	cout << "--=== Prelucreaza Comenzile ===--\n\n";
 }
 
 void Magazin::operator-=(int i) {

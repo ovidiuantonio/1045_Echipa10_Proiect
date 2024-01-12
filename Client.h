@@ -39,6 +39,8 @@ public:
 	void adaugaProdusInCos(Produs* produs, int cantitate);
 	void scoateProdusDinCos(int nrProdus);
 	void afiseazaMeniuUltimaComanda();
+	void afiseazaMeniuIstoricComenzi();
+	void afiseazaMeniuPrelucrareComenzi();
 
 	string getNume();
 	string getTelefon();

@@ -30,6 +30,8 @@ public:
 	Produs** getProduseComandaClient();
 	string getId();
 	vector<int> getCantitati();
+	float getValoare();
+	string getNumeClient();
 
 	void adaugaProdus(Produs* produs);
 

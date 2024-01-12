@@ -42,6 +42,8 @@ public:
 	void afiseazaMeniuSterge();
 	void afiseazaMeniuProduseMagazin();
 	void afiseazaMeniuUltimaComanda();
+	void afiseazaMeniuIstoricComenzi();
+	void afiseazaMeniuPrelucrareComenzi();
 
 	void vizualizareProduse();
 	void editareProdusMagazin(Produs* produs);

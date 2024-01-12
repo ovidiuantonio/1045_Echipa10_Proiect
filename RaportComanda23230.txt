@@ -1,0 +1,7 @@
+Comanda cu id-ul: 23230, in valoare de: 7990 lei, a fost plasata cu succes!
+Acestea sunt produsele pe care le-ai comandat:
+1. Subler x 10 buc.
+2. Laptop x 1 buc.
+3. Combina Frigorifica x 1 buc.
+
+Multumim pentru comanda! Te mai asteptam pe la noi!

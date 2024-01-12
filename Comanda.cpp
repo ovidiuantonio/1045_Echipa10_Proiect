@@ -59,6 +59,16 @@ vector<int> Comanda::getCantitati()
 	return cantitati;
 }
 
+float Comanda::getValoare()
+{
+	return valoarea_totala;
+}
+
+string Comanda::getNumeClient()
+{
+	return nume_client;
+}
+
 void Comanda::serialize(ofstream& fout) const
 {
 	//asa scriu elementele de tip int, float etc, elem numerice
@@ -135,6 +145,22 @@ void Comanda::writeFileComanda()
 		//scriu produsul
 		produseComandaClient[i]->serialize(fout);
 	}
+	fout.close();
+
+	fout.open("RaportComenziMagazin.txt", ios::out | ios::app);
+
+	fout << "Comanda cu id-ul: " << this->comanda_id << ", in valoare de: " << valoarea_totala << " lei, a fost plasata de " << nume_client << "!\n";
+	fout.close();
+
+	fout.open("RaportComanda" + comanda_id + ".txt", ios::out | ios::trunc);
+
+	fout << "Comanda cu id-ul: " << comanda_id << ", in valoare de: " << valoarea_totala << " lei, a fost plasata cu succes!\n";
+	fout << "Acestea sunt produsele pe care le-ai comandat:\n";
+	for (int i = 0; i < nrProduseComanda; i++) {
+		fout << i + 1 << ". " << produseComandaClient[i]->getNume() << " x " << cantitati[i] << " buc.\n";
+	}
+
+	fout << "\nMultumim pentru comanda! Te mai asteptam pe la noi!\n";
 	fout.close();
 }
 

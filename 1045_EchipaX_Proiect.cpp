@@ -14,6 +14,9 @@
 using namespace std;
 
 int main() {
+	//pentru id-uri random de fiecare data
+	srand(time(0));
+
 	string tipUser;
 
 	Magazin magazin("MAMOV", 0, nullptr);
@@ -344,6 +347,7 @@ int main() {
 			else if (optiune == 4) {
 				//4. Prelucrare comenzi
 				// se afiseaza comenzile primite
+				magazin.afiseazaMeniuPrelucrareComenzi();
 				queue<Comanda, list<Comanda>> coadaComenzi;
 				ifstream fin;
 				fin.open("Comenzi.dat", ios::in);
@@ -356,6 +360,9 @@ int main() {
 
 						coadaComenzi.push(comanda);
 					}
+				}
+				else {
+					cout << "\nNu exista comezni de prelucrat!\n";
 				}
 
 				fin.close();
@@ -391,7 +398,30 @@ int main() {
 			}
 			else if (optiune == 5) {
 				//5. Raport comenzi
-				// se scriu toate comenzile intr-un fisier
+				magazin.afiseazaMeniuIstoricComenzi();
+				ifstream fin;
+				fin.open("RaportComenziMagazin.txt", ios::in);
+
+				bool isEmpty = fin.peek() == EOF;
+				if (!isEmpty) {
+					string line;
+					while (getline(fin, line)) {
+						cout << line << "\n";
+					}
+				}
+				else {
+					cout << "\nNu exista comenzi primite!\n";
+				}
+
+				cout << "\n0. Inapoi\n";
+				int back;
+				while (cin >> back) {
+					if (back != 0)
+						cout << "Daca nu introduci valoarea 0 nu te vei mai putea intoarce niciodata! * ^ *\n";
+					else
+						break;
+				}
+
 			}
 			else if (optiune == 0) {
 				break;

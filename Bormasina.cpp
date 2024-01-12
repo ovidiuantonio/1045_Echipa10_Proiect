@@ -12,7 +12,10 @@ Bormasina::Bormasina(int idProdus, int cantitate, float pret, float rating, stri
     : Produs(idProdus, cantitate, pret, rating, nume, marca, descriere)
 {
     this->tipAlimentare = tipAlimentare;
-    this->putere = putere;
+    if (putere >= 100)
+        this->putere = putere;
+    else
+        cout << "Puterea bormasinei este prea mica ,trebuie sa fie mai mare de 100 W";
     this->areBateriaInclusa = areBateriaInclusa;
 }
 

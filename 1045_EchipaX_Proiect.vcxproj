@@ -24,6 +24,7 @@
     <ProjectGuid>{90587079-83ce-4fce-a01b-4c78d5e3984b}</ProjectGuid>
     <RootNamespace>My1045EchipaXProiect</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>1045_Echipa10_Proiect</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,7 +141,7 @@
     <ClInclude Include="Subler.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1045_EchipaX_Proiect.cpp" />
+    <ClCompile Include="1045_Echipa10_Proiect.cpp" />
     <ClCompile Include="Bormasina.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Comanda.cpp" />

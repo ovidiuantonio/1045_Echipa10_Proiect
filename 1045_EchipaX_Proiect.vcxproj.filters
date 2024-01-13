@@ -50,7 +50,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1045_EchipaX_Proiect.cpp">
+    <ClCompile Include="1045_Echipa10_Proiect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Magazin.cpp">

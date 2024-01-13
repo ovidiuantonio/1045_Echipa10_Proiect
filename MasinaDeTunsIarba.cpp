@@ -64,7 +64,12 @@ void MasinaDeTunsIarba::afisareDetalii()
 	cout << "Culoare: ";
 	getline(cin, culoare);
 	cout << "Marime rezervor: ";
-	cin >> marimeRezervor;
+	while (cin >> marimeRezervor) {
+		if (marimeRezervor <= 0)
+			cout << "Valoare invalida! Introdu alta valoare: ";
+		else
+			break;
+	}
 }
 
   void MasinaDeTunsIarba::serialize(ofstream& fout) const

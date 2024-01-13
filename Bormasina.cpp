@@ -65,9 +65,19 @@ void Bormasina::editareProdus() {
     cout << "Tip alimentare: ";
     getline(cin, tipAlimentare);
     cout << "Putere: ";
-    cin >> putere;
+    while (cin >> putere) {
+        if (putere < 100)
+            cout << "Valoare invalida! Introdu alta valoare ( mai mare decat 100W): ";
+        else
+            break;
+    }
     cout << "Are baterie inclusa (1 / 0): ";
-    cin >> areBateriaInclusa;
+    while (cin >> areBateriaInclusa) {
+        if (areBateriaInclusa != 0 && areBateriaInclusa != 1)
+            cout << "Valoare invalida! Introdu alta valoare: ";
+        else
+            break;
+    }
 }
 
 void Bormasina::serialize(ofstream& fout) const {

@@ -11,14 +11,17 @@ CombinaFrigorifica::CombinaFrigorifica()
 CombinaFrigorifica::CombinaFrigorifica(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string descriere, int capacitateCongelare, int greutate, string culoare)
     : Produs(idProdus, cantitate, pret, rating, nume, marca, descriere)
 {
-    this->capacitateCongelare = capacitateCongelare;
-    this->greutate = greutate;
+    if(capacitateCongelare > 0)
+        this->capacitateCongelare = capacitateCongelare;
+    if(greutate > 0)
+        this->greutate = greutate;
     this->culoare = culoare;
 }
 
 void CombinaFrigorifica::setCapacitateCongelare(int capacitateCongelare)
 {
-    this->capacitateCongelare = capacitateCongelare;
+    if(capacitateCongelare > 0)
+        this->capacitateCongelare = capacitateCongelare;
 }
 
 int CombinaFrigorifica::getCapacitateCongelare()
@@ -28,7 +31,8 @@ int CombinaFrigorifica::getCapacitateCongelare()
 
 void CombinaFrigorifica::setGreutate(int greutate)
 {
-    this->greutate = greutate;
+    if(greutate > 0)
+        this->greutate = greutate;
 }
 
 int CombinaFrigorifica::getGreutate()
@@ -61,9 +65,19 @@ void CombinaFrigorifica::editareProdus()
 {
     this->Produs::editareProdus();
     cout << "Capacitate congelare: ";
-    cin >> capacitateCongelare;
+    while (cin >> capacitateCongelare) {
+        if (capacitateCongelare <= 0)
+            cout << "Valoare invalida! Introdu alta valoare: ";
+        else
+            break;
+    }
     cout << "Greutate: ";
-    cin >> greutate;
+    while (cin >> greutate) {
+        if (greutate <= 0)
+            cout << "Valoare invalida! Introdu alta valoare: ";
+        else
+            break;
+    }
     cout << "Culoare: ";
     getline(cin, culoare);
 }

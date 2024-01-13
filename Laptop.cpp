@@ -11,8 +11,10 @@ Laptop::Laptop() {
 Laptop::Laptop(int idProdus, int cantitate, float pret, float rating, string nume, string marca, string desciere, int nivelBaterie, string modelProcesor, float memorieRAM)
 	:Produs(idProdus, cantitate, pret, rating, nume, marca, descriere)
 {
-	this->nivelBaterie = nivelBaterie;
-	this->memorieRAM = memorieRAM;
+	if(nivelBaterie > 0)
+		this->nivelBaterie = nivelBaterie;
+	if(memorieRAM > 0)
+		this->memorieRAM = memorieRAM;
 	this->modelProcesor = modelProcesor;
 }
 
@@ -25,14 +27,16 @@ int Laptop::getNivelBaterie() {
 	return this->nivelBaterie;
 }
 void Laptop::setNivelBaterie(int nivelBaterie) {
-	this->nivelBaterie = nivelBaterie;
+	if(nivelBaterie > 0)
+		this->nivelBaterie = nivelBaterie;
 }
 
 float Laptop::getmemorieRAM() {
 	return this->memorieRAM;
 }
 void Laptop::setmemorieRAM(float memorieRAM) {
-	this->memorieRAM = memorieRAM;
+	if(memorieRAM > 0)
+		this->memorieRAM = memorieRAM;
 }
 
 string Laptop::getModelProcesor() {
@@ -45,9 +49,19 @@ void Laptop::setModelProcesor(string modelProcesor) {
 void Laptop::editareProdus() {
 	this->Produs::editareProdus();
 	cout << "Nivel Baterie: ";
-	cin >> nivelBaterie;
+	while (cin >> nivelBaterie) {
+		if (nivelBaterie <= 0)
+			cout << "Valoare invalida! Introdu alta valoare: ";
+		else
+			break;
+	}
 	cout << "Memorie RAM: ";
-	cin >> memorieRAM;
+	while (cin >> memorieRAM) {
+		if (memorieRAM <= 0)
+			cout << "Valoare invalida! Introdu alta valoare: ";
+		else
+			break;
+	}
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "Model Procesor: ";
 	getline(cin, modelProcesor);
